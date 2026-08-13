@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wow Kabab — Shawarma, Kabobs &amp; Falafel in Rancho Cucamonga</title>
+<meta name="description" content="Beef shawarma, kabobs, falafel and Mediterranean fare in Masi Plaza, Rancho Cucamonga. Vegan options and kids' menu. Call (909) 481-9099.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#B3271E;
+    --cream:#FFF6E8;
+    --char:#1E1A17;
+    --amber:#E8A13C;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none !important;transition:none !important}
+  }
+  body{
+    font-family:'Archivo',system-ui,sans-serif;
+    background:var(--cream);
+    color:var(--char);
+    line-height:1.6;
+  }
+
+  /* Visible focus — deliberately kept, styled to match the brand (WCAG 2.4.7) */
+  :focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .skip-link{
+    position:absolute;
+    left:-9999px;
+    top:0;
+    background:var(--char);
+    color:var(--white);
+    padding:.75rem 1.25rem;
+    z-index:100;
+    font-weight:700;
+  }
+  .skip-link:focus{left:0}
+
+  .display{
+    font-family:'Anton',Impact,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    line-height:1.05;
+  }
+
+  header{
+    background:var(--red);
+    color:var(--white);
+    padding:.85rem 1.25rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .brand{
+    font-family:'Anton',Impact,sans-serif;
+    font-size:1.4rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--white);
+    text-decoration:none;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:1.5rem;
+  }
+  nav a{
+    color:var(--white);
+    text-decoration:none;
+    font-weight:600;
+    border-bottom:2px solid transparent;
+    padding-bottom:2px;
+  }
+  nav a:hover{border-bottom-color:var(--amber)}
+
+  .hero{
+    background:var(--char);
+    color:var(--cream);
+    padding:4rem 1.5rem 4.5rem;
+  }
+  .hero-inner{
+    max-width:1040px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:3rem;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.8rem,8vw,5.5rem);
+    color:var(--cream);
+  }
+  .hero h1 .fire{color:var(--amber)}
+  .tagline{
+    font-size:1.2rem;
+    margin:1.25rem 0 .5rem;
+    max-width:36ch;
+  }
+  .hours-strip{
+    display:inline-block;
+    background:var(--red);
+    color:var(--white);
+    font-weight:700;
+    padding:.35rem .9rem;
+    margin:.75rem 0 1.75rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-size:.9rem;
+  }
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{
+    display:inline-block;
+    font-weight:700;
+    font-size:1.05rem;
+    padding:.9rem 1.6rem;
+    text-decoration:none;
+    border:3px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{
+    background:var(--red);
+    color:var(--white);
+  }
+  .btn-primary:hover{background:#8f1f17}
+  .btn-ghost{
+    background:transparent;
+    color:var(--cream);
+    border-color:var(--cream);
+  }
+  .btn-ghost:hover{
+    background:var(--cream);
+    color:var(--char);
+  }
+
+  .spit{
+    width:130px;
+    height:340px;
+  }
+  @keyframes shimmer{
+    0%,100%{opacity:.85}
+    50%{opacity:1}
+  }
+  .spit .meat{animation:shimmer 3.2s ease-in-out infinite}
+
+  section{padding:3.5rem 1.5rem}
+  .wrap{max-width:1040px;margin:0 auto}
+  h2{
+    font-size:clamp(1.9rem,4.5vw,2.8rem);
+    margin-bottom:2rem;
+    border-bottom:5px solid var(--red);
+    display:inline-block;
+    padding-bottom:.25rem;
+  }
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:1.5rem;
+  }
+  .menu-item{
+    background:var(--white);
+    border:2px solid var(--char);
+    padding:1.5rem;
+  }
+  .menu-item h3{
+    font-family:'Anton',Impact,sans-serif;
+    text-transform:uppercase;
+    font-size:1.25rem;
+    letter-spacing:.03em;
+  }
+  .menu-item p{margin:.5rem 0 0;font-size:.95rem}
+  .diet-tag{
+    display:inline-block;
+    margin-top: .8rem;
+    background:var(--cream);
+    border:1.5px solid var(--char);
+    font-size:.78rem;
+    font-weight:700;
+    padding:.15rem .6rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+
+  .why{background:var(--red);color:var(--white)}
+  .why h2{color:var(--white);border-bottom-color:var(--amber)}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:2rem;
+  }
+  .why h3{font-size:1.1rem;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em}
+
+  .visit-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:2rem;
+  }
+  .visit h3{margin-bottom:.5rem;font-size:1.1rem;text-transform:uppercase;letter-spacing:.04em}
+  .visit a{color:var(--red);font-weight:600}
+
+  footer{
+    background:var(--char);
+    color:var(--cream);
+    text-align:center;
+    padding:1.75rem 1rem;
+    font-size:.9rem;
+  }
+  footer a{color:var(--amber)}
+
+  @media (max-width:720px){
+    .hero-inner{grid-template-columns:1fr}
+    .spit{display:none}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+  <a class="brand" href="#main">Wow Kabab</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#visit">Find Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-inner">
+      <div>
+        <h1 id="hero-heading" class="display">Shawarma.<br>Kabobs.<br><span class="fire">Wow.</span></h1>
+        <p class="tagline">Beef shawarma, kabobs, falafel and Mediterranean fare, served fresh in Masi Plaza.</p>
+        <p class="hours-strip">Hours: [confirm with owner]</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+19094819099">Call to order</a>
+          <a class="btn btn-ghost" href="#visit">Get directions</a>
+        </div>
+      </div>
+      <!-- Decorative shawarma spit graphic — hidden from screen readers on purpose (WCAG 1.1.1 decoration rule) -->
+      <svg class="spit" viewBox="0 0 130 340" aria-hidden="true" focusable="false">
+        <rect x="62" y="0" width="6" height="340" fill="#8a8a8a"/>
+        <g class="meat">
+          <ellipse cx="65" cy="70" rx="46" ry="16" fill="#8f4a1e"/>
+          <ellipse cx="65" cy="100" rx="54" ry="18" fill="#a85a24"/>
+          <ellipse cx="65" cy="132" rx="58" ry="19" fill="#8f4a1e"/>
+          <ellipse cx="65" cy="165" rx="60" ry="20" fill="#b3652a"/>
+          <ellipse cx="65" cy="198" rx="58" ry="19" fill="#8f4a1e"/>
+          <ellipse cx="65" cy="229" rx="52" ry="18" fill="#a85a24"/>
+          <ellipse cx="65" cy="258" rx="44" ry="16" fill="#8f4a1e"/>
+        </g>
+        <circle cx="65" cy="40" r="10" fill="#E8A13C"/>
+      </svg>
+    </div>
+  </section>
+
+  <section id="menu" aria-labelledby="menu-heading">
+    <div class="wrap">
+      <h2 id="menu-heading" class="display">The Menu</h2>
+      <div class="menu-grid">
+        <article class="menu-item">
+          <h3>Beef Shawarma</h3>
+          <p>Marinated beef carved off the spit, wrapped with garlic sauce, pickles, and fresh salad.</p>
+        </article>
+        <article class="menu-item">
+          <h3>Kabob Plate</h3>
+          <p>Char-grilled kabobs over seasoned rice with grilled vegetables and sauce.</p>
+        </article>
+        <article class="menu-item">
+          <h3>Falafel Wrap</h3>
+          <p>Crisp falafel with hummus, tahini, and pickled vegetables in warm flatbread.</p>
+          <p><span class="diet-tag">Vegan</span></p>
+        </article>
+        <article class="menu-item">
+          <h3>Kids' Menu</h3>
+          <p>Smaller plates for smaller appetites. Ask about today's kids' options.</p>
+          <p><span class="diet-tag">Kid friendly</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="why" aria-labelledby="why-heading">
+    <div class="wrap">
+      <h2 id="why-heading" class="display">Why Wow</h2>
+      <div class="why-grid">
+        <div>
+          <h3>Fresh, casual, fast</h3>
+          <p>Real Mediterranean fare made to order — no fuss, no wait, no compromise.</p>
+        </div>
+        <div>
+          <h3>Something for everyone</h3>
+          <p>Vegan options and a kids' menu, so the whole table eats happy.</p>
+        </div>
+        <div>
+          <h3>Easy to find</h3>
+          <p>Right in Masi Plaza on Foothill Blvd, with plenty of parking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="visit" aria-labelledby="visit-heading">
+    <div class="wrap">
+      <h2 id="visit-heading" class="display">Find Us</h2>
+      <div class="visit-grid">
+        <div>
+          <h3>Address</h3>
+          <p>Masi Plaza<br>11819 Foothill Blvd, Ste E<br>Rancho Cucamonga, CA 91730</p>
+          <p><a href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Open in Google Maps</a></p>
+        </div>
+        <div>
+          <h3>Phone</h3>
+          <p><a href="tel:+19094819099">(909) 481-9099</a></p>
+          <p>Call ahead — we'll have it ready.</p>
+        </div>
+        <div>
+          <h3>Hours</h3>
+          <p>[Confirm hours with the shop and I'll format them properly]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Wow Kabab · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA · <a href="tel:+19094819099">(909) 481-9099</a></p>
+</footer>
+
+</body>
+</html>
