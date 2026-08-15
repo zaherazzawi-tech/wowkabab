@@ -7,20 +7,21 @@
 <meta name="description" content="Beef shawarma, kabobs, falafel and Mediterranean fare in Masi Plaza, Rancho Cucamonga. Vegan options and kids' menu. Call (909) 481-9099.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Baloo+2:wght@800&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --red:#B3271E;
-  --red-deep:#8f1f17;
-  --green:#186A34;
+  --red:#CB1214;        /* sampled from hero art */
+  --red-deep:#A00E10;
+  --green:#186A34;      /* dark green for text/buttons (contrast-safe) */
   --green-deep:#0F4D24;
-  --cream:#FBF3E4;
-  --ink:#141210;
+  --lime:#A7C23D;       /* sampled logo green — decorative + on dark only */
+  --cream:#FBF4E3;      /* sampled from hero art */
+  --ink:#231F20;        /* sampled from logo background */
   --white:#FFFFFF;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:6rem}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:clip}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important;transition:none !important}
@@ -38,29 +39,37 @@ body.motion-paused *{animation-play-state:paused !important}
 
 /* ---------- pill nav ---------- */
 .site-header{
-  position:sticky;top:.75rem;z-index:50;
-  max-width:1180px;margin:.75rem auto 0;
+  position:sticky;top:.6rem;z-index:50;
+  max-width:1180px;width:calc(100% - 1.2rem);margin:.6rem auto 0;
   background:var(--ink);color:var(--white);
-  border-radius:999px;padding:.7rem 1.4rem;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  border-radius:999px;padding:.55rem 1.1rem;
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
 }
-.brand{font-family:'Titan One',sans-serif;font-size:1.25rem;text-transform:uppercase;color:var(--white);text-decoration:none;letter-spacing:.03em}
-.brand .bang{color:#7BC96A}
-.site-nav ul{list-style:none;display:flex;gap:.4rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;text-decoration:none;flex-shrink:1;min-width:0}
+.brand svg{height:30px;width:auto;display:block}
+.site-nav ul{list-style:none;display:flex;gap:.35rem;flex-wrap:wrap}
 .site-nav a{
   color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;
   font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-radius:999px;border:2px solid transparent;
 }
-.site-nav a:hover{border-color:#7BC96A}
+.site-nav a:hover{border-color:var(--lime)}
 .site-nav a[aria-current="page"]{background:var(--cream);color:var(--ink)}
+@media (max-width:560px){
+  .site-header{padding:.5rem .8rem;top:.4rem}
+  .brand svg{height:22px}
+  .site-nav a{font-size:.65rem;padding:.45rem .65rem;letter-spacing:.05em}
+}
 
 /* ---------- hero (user's artwork + real overlaid control) ---------- */
-.hero{background:var(--red);position:relative;margin-top:-4.1rem;padding-top:4.1rem}
+.hero{background:var(--red);position:relative;margin-top:-4.2rem;padding-top:5rem}
 .hero-frame{position:relative;max-width:1280px;margin:0 auto}
 .hero-frame img{display:block;width:100%;height:auto}
-.hero-frame .btn-overlay{
-  position:absolute;left:50%;transform:translateX(-50%);
-  bottom:2.5%;
+/* CTA row sits on the cream band the artwork's scallops fade into */
+.hero-cta{
+  background:var(--cream);
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  padding:.5rem 1rem 0;
+  margin-top:-2px;
 }
 .btn{
   display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
@@ -68,7 +77,6 @@ body.motion-paused *{animation-play-state:paused !important}
   border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);
 }
 .btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
-.btn-overlay .btn{transform:none}
 .btn-red{background:var(--red);color:var(--white)}
 .btn-red:hover{background:var(--red-deep)}
 .btn-green{background:var(--green);color:var(--white)}
@@ -80,12 +88,12 @@ body.motion-paused *{animation-play-state:paused !important}
 .ticker-track{display:inline-block;animation:tickerScroll 26s linear infinite}
 .ticker:hover .ticker-track{animation-play-state:paused}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker .chunk{font-size:clamp(1.3rem,3.2vw,2rem);color:var(--ink)}
 .ticker .sep{color:var(--green);margin:0 1.1rem}
 .ticker-ink{background:var(--ink)}
 .ticker-ink .chunk{color:var(--cream)}
-.ticker-ink .sep{color:#7BC96A}
-.ticker-ink.tilt{transform:rotate(-1.4deg);margin:2.5rem -1rem}
+.ticker-ink .sep{color:var(--lime)}
+.ticker-ink.tilt{transform:rotate(-1.4deg);margin:2.5rem 0}
+.ticker .chunk{font-size:clamp(1.05rem,3.2vw,2rem);color:var(--ink)}
 .pause-motion{
   position:fixed;bottom:1rem;right:1rem;z-index:60;
   background:var(--ink);color:var(--white);border:2px solid var(--cream);border-radius:999px;
@@ -175,10 +183,29 @@ body.motion-paused *{animation-play-state:paused !important}
 
 /* ---------- footer ---------- */
 .site-footer{background:var(--ink);color:var(--cream);text-align:center;padding:2.2rem 1rem;margin-top:2rem}
-.site-footer a{color:#7BC96A;font-weight:600}
+.site-footer a{color:var(--lime);font-weight:600}
 .site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
 .site-footer nav a{color:var(--cream);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
-.site-footer nav a:hover{color:#7BC96A}
+.site-footer nav a:hover{color:var(--lime)}
+
+/* ---------- mobile breathing room ---------- */
+@media (max-width:600px){
+  .cols{padding:0 1.1rem;gap:1rem}
+  .slider-sec{padding:2.75rem 0 1.5rem}
+  .slide{flex:0 0 82vw}
+  .slide img{height:200px}
+  .slider-btns button{width:44px;height:44px}
+  .circle-sec{padding:2.5rem 0 3.5rem}
+  .sticker{font-size:.62rem;padding:.3rem .6rem;box-shadow:2px 2px 0 var(--ink)}
+  .stickers .sticker:nth-child(1){left:0}
+  .stickers .sticker:nth-child(2){right:0}
+  .stickers .sticker:nth-child(3){left:0}
+  .stickers .sticker:nth-child(4){right:0}
+  .visit .cta-row{flex-direction:column;align-items:center}
+  .visit .cta-row .btn{width:100%;max-width:320px;text-align:center}
+  .ticker{padding:.7rem 0}
+  .pause-motion{font-size:.68rem;padding:.5rem .8rem}
+}
 </style>
 </head>
 <body>
@@ -186,7 +213,23 @@ body.motion-paused *{animation-play-state:paused !important}
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html">Wow<span class="bang">!</span> Kabab</a>
+  <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
+    <!-- logo recreation: rounded wordmark, olive O with leaves, green exclamation -->
+    <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
+      <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
+        <text x="0" y="47">W</text>
+        <text x="80" y="47">W</text>
+        <text x="124" y="47" fill="#A7C23D">!</text>
+        <text x="148" y="47" letter-spacing="1">KABAB</text>
+      </g>
+      <!-- olive O -->
+      <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
+      <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
+      <!-- leaves -->
+      <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
+      <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
+    </svg>
+  </a>
   <nav class="site-nav" aria-label="Main">
     <ul>
       <li><a href="index.html" aria-current="page">Home</a></li>
@@ -199,18 +242,19 @@ body.motion-paused *{animation-play-state:paused !important}
 <main id="main">
   <h1 class="sr-only">Wow Kabab — shawarma, kabobs and falafel in Rancho Cucamonga</h1>
 
-  <!-- HERO: user's artwork, real button overlaid on the painted one -->
+  <!-- HERO: user's artwork (no baked-in controls in this version) -->
   <section class="hero" aria-label="Welcome">
     <div class="hero-frame">
-      <img src="images/hero.png" alt="The Wow Kabab — the amazing food you ever tasted. Hand-drawn storefront of the Wow Kabab restaurant with a striped awning.">
-      <div class="btn-overlay">
-        <a class="btn btn-red" href="#visit">Find location</a>
-      </div>
+      <img src="images/hero.png" alt="The Wow Kabab. Hand-drawn storefront of the Wow Kabab restaurant with striped awnings and the olive-leaf logo on its sign.">
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-cream" href="#visit">Find location</a>
+      <a class="btn btn-green" href="menu.html">See the menu</a>
     </div>
   </section>
 
   <!-- BIG TICKER -->
-  <div class="ticker" aria-hidden="true">
+  <div class="ticker" style="margin-top:1.5rem" aria-hidden="true">
     <div class="ticker-track">
       <span class="chunk">Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> </span>
     </div>
