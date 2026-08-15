@@ -7,113 +7,352 @@
 <meta name="description" content="Beef shawarma, kabobs, falafel and Mediterranean fare in Masi Plaza, Rancho Cucamonga. Vegan options and kids' menu. Call (909) 481-9099.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#B3271E;
+  --red-deep:#8f1f17;
+  --green:#186A34;
+  --green-deep:#0F4D24;
+  --cream:#FBF3E4;
+  --ink:#141210;
+  --white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:6rem}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+body.motion-paused *{animation-play-state:paused !important}
+
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--cream), 0 0 0 9px var(--ink);border-radius:4px}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--white);padding:.75rem 1.25rem;font-weight:800}
+.skip-link:focus{left:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.chunk{font-family:'Titan One',system-ui,sans-serif;text-transform:uppercase;line-height:.95;letter-spacing:.01em}
+.caps{font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+
+/* ---------- pill nav ---------- */
+.site-header{
+  position:sticky;top:.75rem;z-index:50;
+  max-width:1180px;margin:.75rem auto 0;
+  background:var(--ink);color:var(--white);
+  border-radius:999px;padding:.7rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{font-family:'Titan One',sans-serif;font-size:1.25rem;text-transform:uppercase;color:var(--white);text-decoration:none;letter-spacing:.03em}
+.brand .bang{color:#7BC96A}
+.site-nav ul{list-style:none;display:flex;gap:.4rem;flex-wrap:wrap}
+.site-nav a{
+  color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;
+  font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-radius:999px;border:2px solid transparent;
+}
+.site-nav a:hover{border-color:#7BC96A}
+.site-nav a[aria-current="page"]{background:var(--cream);color:var(--ink)}
+
+/* ---------- hero (user's artwork + real overlaid control) ---------- */
+.hero{background:var(--red);position:relative;margin-top:-4.1rem;padding-top:4.1rem}
+.hero-frame{position:relative;max-width:1280px;margin:0 auto}
+.hero-frame img{display:block;width:100%;height:auto}
+.hero-frame .btn-overlay{
+  position:absolute;left:50%;transform:translateX(-50%);
+  bottom:2.5%;
+}
+.btn{
+  display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+  font-size:.95rem;padding:.85rem 1.8rem;border-radius:10px;text-decoration:none;cursor:pointer;
+  border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);
+}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-overlay .btn{transform:none}
+.btn-red{background:var(--red);color:var(--white)}
+.btn-red:hover{background:var(--red-deep)}
+.btn-green{background:var(--green);color:var(--white)}
+.btn-green:hover{background:var(--green-deep)}
+.btn-cream{background:var(--cream);color:var(--ink)}
+
+/* ---------- tickers ---------- */
+.ticker{overflow:hidden;white-space:nowrap;padding:.9rem 0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);background:var(--cream)}
+.ticker-track{display:inline-block;animation:tickerScroll 26s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker .chunk{font-size:clamp(1.3rem,3.2vw,2rem);color:var(--ink)}
+.ticker .sep{color:var(--green);margin:0 1.1rem}
+.ticker-ink{background:var(--ink)}
+.ticker-ink .chunk{color:var(--cream)}
+.ticker-ink .sep{color:#7BC96A}
+.ticker-ink.tilt{transform:rotate(-1.4deg);margin:2.5rem -1rem}
+.pause-motion{
+  position:fixed;bottom:1rem;right:1rem;z-index:60;
+  background:var(--ink);color:var(--white);border:2px solid var(--cream);border-radius:999px;
+  font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;padding:.6rem 1rem;cursor:pointer;
+}
+
+/* ---------- two-column shell ---------- */
+.cols{max-width:1180px;margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:1fr;gap:2rem}
+@media (min-width:1120px){
+  .cols{grid-template-columns:minmax(0,1fr) 360px;align-items:start}
+}
+.rail{display:none}
+@media (min-width:1120px){.rail{display:block}}
+
+/* ---------- slider ---------- */
+.slider-sec{padding:3.5rem 0 2rem}
+.slider-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.4rem;flex-wrap:wrap}
+.slider-head h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+.slider-btns{display:flex;gap:.6rem}
+.slider-btns button{
+  width:48px;height:48px;border-radius:999px;border:3px solid var(--ink);
+  background:var(--green);color:var(--white);font-size:1.3rem;font-weight:800;cursor:pointer;
+  box-shadow:3px 3px 0 var(--ink);
+}
+.slider-btns button:hover{background:var(--green-deep)}
+.slider-btns button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.slider{
+  display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:.5rem .25rem 1.25rem;
+}
+.slider::-webkit-scrollbar{height:10px}
+.slider::-webkit-scrollbar-thumb{background:var(--ink);border-radius:99px}
+.slide{
+  flex:0 0 min(270px,78vw);scroll-snap-align:start;
+  border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:5px 5px 0 var(--ink);
+  background:var(--white);
+}
+.slide img{width:100%;height:230px;object-fit:cover;display:block}
+.slide .cap{padding:.9rem 1rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.85rem}
+.slide-text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.5rem;min-height:280px}
+.slide-text .chunk{font-size:1.5rem;line-height:1.1}
+.slide-text .chip{margin-top:1.1rem;font-family:'Titan One',sans-serif;font-size:.75rem;letter-spacing:.06em;padding:.3rem .8rem;border-radius:999px;border:2px solid currentColor}
+.slide-ink{background:var(--ink);color:var(--cream)}
+.slide-red{background:var(--red);color:var(--white)}
+.slide-green{background:var(--green);color:var(--white)}
+
+/* ---------- circle art ---------- */
+.circle-sec{padding:2.5rem 0 4rem;text-align:center;position:relative}
+.circle-wrap{position:relative;width:min(420px,92vw);margin:1.5rem auto 0}
+.circle-wrap svg{width:100%;height:auto;display:block}
+.stickers{position:absolute;inset:0;pointer-events:none}
+.sticker{
+  position:absolute;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;
+  padding:.4rem .9rem;border-radius:999px;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);
+}
+.sticker-red{background:var(--red);color:var(--white)}
+.sticker-green{background:var(--green);color:var(--white)}
+
+/* ---------- visit ---------- */
+.visit{padding:1rem 0 4rem;text-align:center}
+.visit h2{font-size:clamp(1.7rem,4.5vw,2.4rem);margin-bottom:1.2rem}
+.visit p{max-width:52ch;margin:0 auto .5rem;font-weight:600}
+.visit .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+
+/* ---------- rail (desktop only, nothing essential lives here) ---------- */
+.rail-card{border:3px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:5px 5px 0 var(--ink);margin-bottom:2rem}
+.rail-flavor{background:var(--red);color:var(--white);text-align:center;padding:2.2rem 1.4rem;position:relative}
+.rail-flavor h2{font-size:1.7rem;color:var(--white)}
+.rail-flavor p{font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;margin:.9rem 0 1.4rem}
+.rail-photos{background:var(--cream);padding:1.6rem 1.2rem;text-align:center}
+.rail-photos img{width:82%;border:3px solid var(--ink);display:block;margin:0 auto}
+.rail-photos .p1{transform:rotate(-3deg)}
+.rail-photos .p2{transform:rotate(2.5deg);margin-top:-1.2rem}
+.rail-reviews{background:var(--cream);padding:1.8rem 1.2rem;text-align:center}
+.rail-reviews h2{font-size:1.35rem;margin-bottom:1.2rem}
+.rail-review{
+  text-align:left;border:3px solid var(--ink);border-radius:12px;padding:1rem;margin-bottom:1rem;
+  box-shadow:4px 4px 0 var(--ink);font-size:.88rem;
+}
+.rail-review:nth-child(odd){background:var(--green);color:var(--white);transform:rotate(-1.6deg)}
+.rail-review:nth-child(even){background:var(--ink);color:var(--cream);transform:rotate(1.4deg)}
+.rail-review .stars{color:#F2B33D;letter-spacing:.12em}
+.rail-review cite{font-style:normal;font-weight:800;text-transform:uppercase;font-size:.7rem;letter-spacing:.08em}
+.rail-fuel{background:var(--cream);text-align:center;padding:2rem 1.2rem}
+.rail-fuel .kicker{font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:.7rem;color:var(--red)}
+.rail-fuel h2{font-size:1.5rem;margin:.4rem 0 1.2rem}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--ink);color:var(--cream);text-align:center;padding:2.2rem 1rem;margin-top:2rem}
+.site-footer a{color:#7BC96A;font-weight:600}
+.site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
+.site-footer nav a{color:var(--cream);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
+.site-footer nav a:hover{color:#7BC96A}
+</style>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="site-header">
-  <a class="brand" href="index.html">Wow Kabab</a>
+  <a class="brand" href="index.html">Wow<span class="bang">!</span> Kabab</a>
   <nav class="site-nav" aria-label="Main">
     <ul>
       <li><a href="index.html" aria-current="page">Home</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="story.html">Our Story</a></li>
-      <li><a href="index.html#visit">Find Us</a></li>
     </ul>
   </nav>
 </header>
 
 <main id="main">
+  <h1 class="sr-only">Wow Kabab — shawarma, kabobs and falafel in Rancho Cucamonga</h1>
 
-  <section class="hero" aria-labelledby="hero-heading">
-    <img class="hero-photo" src="images/kabab_1.jpg" alt="" >
-    <div class="hero-content">
-      <h1 id="hero-heading" class="display">Shawarma.<br>Kabobs.<br>Wow<span class="dot">.</span></h1>
-      <p class="tagline">Beef shawarma carved off the spit, char-grilled kabobs, crisp falafel — served fresh in Masi Plaza.</p>
-      <p class="hours-strip">Call for today's hours</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="menu.html">See the menu</a>
-        <a class="btn btn-light" href="tel:+19094819099">Call to order</a>
+  <!-- HERO: user's artwork, real button overlaid on the painted one -->
+  <section class="hero" aria-label="Welcome">
+    <div class="hero-frame">
+      <img src="images/hero.png" alt="The Wow Kabab — the amazing food you ever tasted. Hand-drawn storefront of the Wow Kabab restaurant with a striped awning.">
+      <div class="btn-overlay">
+        <a class="btn btn-red" href="#visit">Find location</a>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="fav-heading">
-    <div class="wrap">
-      <span class="eyebrow">What people come back for</span>
-      <h2 id="fav-heading" class="display">House favorites<span class="dot">.</span></h2>
-      <div class="grid-3">
-        <article class="photo-card">
-          <img src="images/kabab_2.jpg" alt="Shawarma wraps cut open on a wooden board with seasoned fries and grilled peppers">
-          <div class="pad">
-            <h3>Beef Shawarma Wrap</h3>
-            <p>Marinated beef carved to order, garlic sauce, pickles, fresh salad, warm flatbread.</p>
+  <!-- BIG TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="chunk">Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> </span>
+    </div>
+  </div>
+
+  <div class="cols">
+
+    <!-- MAIN COLUMN -->
+    <div class="main-col">
+
+      <!-- SLIDER -->
+      <section class="slider-sec" aria-labelledby="slider-heading">
+        <div class="slider-head">
+          <h2 id="slider-heading" class="chunk">Fresh off the spit</h2>
+          <div class="slider-btns">
+            <button type="button" onclick="slideBy(-1)" aria-label="Scroll to previous items">‹</button>
+            <button type="button" onclick="slideBy(1)" aria-label="Scroll to next items">›</button>
           </div>
-        </article>
-        <article class="photo-card">
-          <img src="images/kabab_3.jpg" alt="Chicken shawarma platter with rice, flatbread, salad, pickled vegetables and white sauce">
-          <div class="pad">
-            <h3>Shawarma Plate</h3>
-            <p>A full spread — shawarma over rice with salad, pickles, sauces and fresh bread.</p>
+        </div>
+        <div class="slider" id="slider" tabindex="0" role="region" aria-label="Menu highlights, scrollable">
+          <figure class="slide">
+            <img src="images/kabab_1.jpg" alt="Beef and chicken shawarma stacked on two vertical rotisserie spits over glowing burners">
+            <figcaption class="cap">The spits, all day</figcaption>
+          </figure>
+          <div class="slide slide-ink slide-text">
+            <p class="chunk">Turn up the flavor. Turn up the fun.</p>
+            <span class="chip">Wow! Kabab</span>
           </div>
-        </article>
-        <article class="photo-card">
-          <div class="pad">
-            <h3>Falafel Wrap</h3>
-            <p>Crisp falafel, hummus, tahini and pickled vegetables. Fully plant-based.</p>
-            <p><span class="diet-tag">Vegan</span></p>
+          <figure class="slide">
+            <img src="images/kabab_2.jpg" alt="Shawarma wraps cut open on a wooden board with seasoned fries and grilled peppers">
+            <figcaption class="cap">Wraps &amp; fries</figcaption>
+          </figure>
+          <div class="slide slide-green slide-text">
+            <p class="chunk">Snack like you mean it.</p>
+            <span class="chip">Vegan options</span>
           </div>
+          <figure class="slide">
+            <img src="images/kabab_3.jpg" alt="Chicken shawarma platter with rice, flatbread, salad, pickled vegetables and white sauce">
+            <figcaption class="cap">The full plate</figcaption>
+          </figure>
+          <div class="slide slide-red slide-text">
+            <p class="chunk">Bring the kids. Bring everyone.</p>
+            <span class="chip">Kids' menu</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CIRCLE ART -->
+      <section class="circle-sec" aria-labelledby="circle-heading">
+        <h2 id="circle-heading" class="chunk" style="font-size:clamp(1.7rem,4.5vw,2.4rem)">One bite and you'll get it<span style="color:var(--green)">.</span></h2>
+        <div class="circle-wrap" role="img" aria-label="The words Wow Kabab spiraling around a delighted cartoon face, surrounded by stickers reading Shawarmaaa, Kabobzzz, Falafuuul and So creamyyy.">
+          <svg viewBox="0 0 420 420" aria-hidden="true" focusable="false">
+            <defs>
+              <path id="c1" d="M210,210 m-170,0 a170,170 0 1,1 340,0 a170,170 0 1,1 -340,0"/>
+              <path id="c2" d="M210,210 m-136,0 a136,136 0 1,1 272,0 a136,136 0 1,1 -272,0"/>
+              <path id="c3" d="M210,210 m-102,0 a102,102 0 1,1 204,0 a102,102 0 1,1 -204,0"/>
+            </defs>
+            <g font-family="'Titan One',sans-serif" font-size="26" letter-spacing="3">
+              <text fill="#B3271E"><textPath href="#c1">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
+              <text fill="#141210"><textPath href="#c2" startOffset="30">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
+              <text fill="#186A34"><textPath href="#c3" startOffset="60">WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
+            </g>
+            <!-- delighted face, hands on head -->
+            <g fill="none" stroke="#141210" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="210" cy="212" r="52" fill="#FBF3E4"/>
+              <path d="M170 186q8-14 22-16M250 186q-8-14-22-16" stroke-width="3"/>
+              <path d="M188 206q5-8 12 0M232 206q-5-8-12 0"/>
+              <path d="M192 232q18 16 36 0" />
+              <path d="M198 236q12 8 24 0" stroke-width="3"/>
+              <!-- hands gripping head -->
+              <path d="M158 196q-14-4-14-18q10-2 16 6q-2-12 8-16q8 8 2 20" fill="#FBF3E4" stroke-width="3.5"/>
+              <path d="M262 196q14-4 14-18q-10-2-16 6q2-12-8-16q-8 8-2 20" fill="#FBF3E4" stroke-width="3.5"/>
+              <!-- mind-blown arcs -->
+              <path d="M162 152l-10-10M258 152l10-10M210 142v-14" stroke-width="3"/>
+            </g>
+          </svg>
+          <div class="stickers" aria-hidden="true">
+            <span class="sticker sticker-red" style="top:14%;left:-2%;transform:rotate(-10deg)">Shawarmaaa</span>
+            <span class="sticker sticker-green" style="top:8%;right:-3%;transform:rotate(8deg)">Kabobzzz</span>
+            <span class="sticker sticker-green" style="bottom:16%;left:-4%;transform:rotate(6deg)">Falafuuul</span>
+            <span class="sticker sticker-red" style="bottom:10%;right:-2%;transform:rotate(-7deg)">So creamyyy</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISIT (essential info lives in the main column on purpose) -->
+      <section class="visit" id="visit" aria-labelledby="visit-heading">
+        <h2 id="visit-heading" class="chunk">Find us<span style="color:var(--green)">.</span></h2>
+        <p>Masi Plaza · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA 91730</p>
+        <p>Call for today's hours.</p>
+        <div class="cta-row">
+          <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
+          <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RAIL (desktop only — nothing essential is rail-only) -->
+    <aside class="rail" aria-label="More from Wow Kabab">
+      <div class="rail-card rail-flavor">
+        <h2 class="chunk">Ready for a flavor adventure</h2>
+        <p>Bold spice · fresh fire · made to order</p>
+        <a class="btn btn-cream" href="menu.html">Discover the menu</a>
+      </div>
+
+      <div class="rail-card rail-photos">
+        <img class="p1" src="images/kabab_2.jpg" alt="Shawarma wraps cut open on a wooden board with fries">
+        <img class="p2" src="images/kabab_3.jpg" alt="Chicken shawarma platter with rice, salad and flatbread">
+      </div>
+
+      <div class="rail-card rail-reviews">
+        <h2 class="chunk">Real talk from real foodies</h2>
+        <article class="rail-review">
+          <p class="stars" aria-hidden="true">★★★★★</p>
+          <p class="sr-only">Five stars</p>
+          <blockquote>[PASTE A REAL GOOGLE REVIEW — do not publish placeholders]</blockquote>
+          <cite>— Reviewer name</cite>
+        </article>
+        <article class="rail-review">
+          <p class="stars" aria-hidden="true">★★★★★</p>
+          <p class="sr-only">Five stars</p>
+          <blockquote>[PASTE A REAL GOOGLE REVIEW]</blockquote>
+          <cite>— Reviewer name</cite>
         </article>
       </div>
-      <p style="margin-top:2rem"><a class="btn btn-dark" href="menu.html">See the full menu</a></p>
-    </div>
-  </section>
 
-  <section class="section section-red" aria-labelledby="why-heading">
-    <div class="wrap">
-      <h2 id="why-heading" class="display">Why Wow<span class="dot">.</span></h2>
-      <div class="grid-3">
-        <div>
-          <h3 style="text-transform:uppercase;letter-spacing:.04em;font-size:1.05rem;margin-bottom:.4rem">Fresh, casual, fast</h3>
-          <p>Real Mediterranean fare made to order — no fuss, no long wait, no compromise.</p>
-        </div>
-        <div>
-          <h3 style="text-transform:uppercase;letter-spacing:.04em;font-size:1.05rem;margin-bottom:.4rem">Something for everyone</h3>
-          <p>Vegan options and a kids' menu, so the whole table eats happy.</p>
-        </div>
-        <div>
-          <h3 style="text-transform:uppercase;letter-spacing:.04em;font-size:1.05rem;margin-bottom:.4rem">Easy to find</h3>
-          <p>Right in Masi Plaza on Foothill Blvd, with plenty of parking.</p>
-        </div>
+      <div class="rail-card rail-fuel">
+        <p class="kicker">Join the flavor revolution!</p>
+        <h2 class="chunk">Fuel up with Wow Kabab</h2>
+        <a class="btn btn-red" href="tel:+19094819099">Call to order</a>
       </div>
-    </div>
-  </section>
+    </aside>
 
-  <section id="visit" class="section section-dark" aria-labelledby="visit-heading">
-    <div class="wrap">
-      <span class="eyebrow" style="color:var(--amber)">Masi Plaza</span>
-      <h2 id="visit-heading" class="display">Find us<span class="dot">.</span></h2>
-      <div class="visit-grid">
-        <div>
-          <h3>Address</h3>
-          <p>11819 Foothill Blvd, Ste E<br>Rancho Cucamonga, CA 91730</p>
-          <p><a href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Open in Google Maps</a></p>
-        </div>
-        <div>
-          <h3>Phone</h3>
-          <p><a href="tel:+19094819099">(909) 481-9099</a></p>
-          <p>Call ahead — we'll have it ready.</p>
-        </div>
-        <div>
-          <h3>Hours</h3>
-          <p>Call for today's hours.</p>
-        </div>
-      </div>
+  </div>
+
+  <!-- FOOD STRIP -->
+  <div class="ticker ticker-ink tilt" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="chunk" style="font-size:1.1rem">Shawarma <span class="sep">✦</span> Kabobs <span class="sep">✦</span> Falafel <span class="sep">✦</span> Fries <span class="sep">✦</span> Hummus <span class="sep">✦</span> Wraps <span class="sep">✦</span> Plates <span class="sep">✦</span> Shawarma <span class="sep">✦</span> Kabobs <span class="sep">✦</span> Falafel <span class="sep">✦</span> Fries <span class="sep">✦</span> Hummus <span class="sep">✦</span> Wraps <span class="sep">✦</span> Plates <span class="sep">✦</span> </span>
     </div>
-  </section>
+  </div>
 
 </main>
 
@@ -127,6 +366,22 @@
   </nav>
   <p>© 2026 Wow Kabab · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA · <a href="tel:+19094819099">(909) 481-9099</a></p>
 </footer>
+
+<button class="pause-motion" type="button" aria-pressed="false" onclick="toggleMotion(this)">Pause motion</button>
+
+<script>
+function toggleMotion(btn){
+  var paused = document.body.classList.toggle('motion-paused');
+  btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+  btn.textContent = paused ? 'Play motion' : 'Pause motion';
+}
+function slideBy(dir){
+  var s = document.getElementById('slider');
+  var card = s.querySelector('.slide');
+  var w = card ? card.getBoundingClientRect().width + 18 : 300;
+  s.scrollBy({left: dir * w, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+}
+</script>
 
 </body>
 </html>
