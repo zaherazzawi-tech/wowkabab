@@ -9,35 +9,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Baloo+2:wght@800&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#171415;--card:#231F20;--line:#3A3536;--red:#CB1214;--green:#186A34;--lime:#A7C23D;--cream:#FBF4E3;--white:#FFFFFF}
+:root{--bg:#171415;--panel:#FBF4E3;--ink:#231F20;--line-light:#E4DCC9;--red:#CB1214;--green:#186A34;--lime:#A7C23D;--white:#FFFFFF}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--cream);line-height:1.7}
-:focus-visible{outline:3px solid var(--lime);outline-offset:2px;box-shadow:0 0 0 6px var(--bg),0 0 0 9px var(--lime);border-radius:4px}
-.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--cream);color:var(--card);padding:.75rem 1.25rem;font-weight:800}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--lime);border-radius:4px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--panel);color:var(--ink);padding:.75rem 1.25rem;font-weight:800}
 .skip-link:focus{left:0}
-.site-header{position:sticky;top:.6rem;z-index:50;max-width:1360px;width:calc(100% - 1.2rem);margin:.6rem auto 0;background:var(--card);color:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.panel{max-width:860px;margin:1.25rem auto;background:var(--panel);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.45);overflow:hidden;padding-bottom:2rem}
+.site-header{background:var(--ink);color:var(--white);border-radius:999px;padding:.55rem 1.1rem;margin:.9rem .9rem .5rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
 .brand{display:flex;align-items:center;text-decoration:none}
 .brand svg{height:30px;width:auto;display:block}
 .site-nav ul{list-style:none;display:flex;gap:.35rem;flex-wrap:wrap}
-.site-nav a{color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-radius:999px;border:2px solid transparent}
+.site-nav a{color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;font-size:.75rem;letter-spacing:.08em;padding:.5rem .9rem;border-radius:999px;border:2px solid transparent}
 .site-nav a:hover{border-color:var(--lime)}
-@media (max-width:560px){.site-header{padding:.5rem .8rem;top:.4rem}.brand svg{height:22px}.site-nav a{font-size:.62rem;padding:.45rem .6rem;letter-spacing:.04em}}
-main{max-width:760px;margin:0 auto;padding:2.5rem 1.25rem 3.5rem}
-h1{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:clamp(2rem,6vw,3rem);line-height:1;margin-bottom:1.5rem}
-h1 .dot{color:var(--lime)}
-h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.25rem;margin:2.25rem 0 .75rem;color:var(--cream)}
+@media (max-width:560px){.brand svg{height:20px}.site-nav a{font-size:.6rem;padding:.4rem .55rem;letter-spacing:.03em}}
+main{padding:1.5rem 1.75rem 0}
+h1{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:clamp(1.9rem,5.5vw,2.8rem);line-height:1;margin-bottom:1.4rem;color:var(--ink)}
+h1 .dot{color:var(--green)}
+h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.2rem;margin:2.1rem 0 .7rem;color:var(--ink)}
 p{margin-bottom:1rem;max-width:68ch}
 ul{margin:0 0 1rem 1.4rem}
 li{margin-bottom:.4rem}
-a{color:var(--lime);font-weight:600}
-.card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5);padding:1.5rem;margin:1.5rem 0}
-.site-footer{background:var(--card);border-top:1.5px solid var(--line);color:var(--cream);text-align:center;padding:2.2rem 1rem}
+a{color:var(--red);font-weight:600}
+.card{background:var(--white);border:2px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 var(--ink);padding:1.5rem;margin:1.5rem 0}
+.site-footer{background:var(--bg);color:var(--panel);text-align:center;padding:2.2rem 1rem}
 .site-footer a{color:var(--lime);font-weight:600}
 .site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap;margin-left:0}
 .site-footer nav li{margin-bottom:0}
-.site-footer nav a{color:var(--cream);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
+.site-footer nav a{color:var(--panel);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
 .site-footer nav a:hover{color:var(--lime)}
 </style>
 </head>
@@ -45,63 +46,65 @@ a{color:var(--lime);font-weight:600}
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
-    <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
-      <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
-        <text x="0" y="47">W</text>
-        <text x="80" y="47">W</text>
-        <text x="124" y="47" fill="#A7C23D">!</text>
-        <text x="148" y="47" letter-spacing="1">KABAB</text>
-      </g>
-      <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
-      <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
-      <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
-      <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
-    </svg>
-  </a>
-  <nav class="site-nav" aria-label="Main">
+<div class="panel">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
+      <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
+        <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
+          <text x="0" y="47">W</text>
+          <text x="80" y="47">W</text>
+          <text x="124" y="47" fill="#A7C23D">!</text>
+          <text x="148" y="47" letter-spacing="1">KABAB</text>
+        </g>
+        <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
+        <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
+        <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
+        <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
+      </svg>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="index.html#visit">Find Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h1>Accessibility<span class="dot">.</span></h1>
+
+    <p>Everyone should be able to find us, read our menu, and order a kabab — whatever device or assistive technology they use. That's the standard we build this website to.</p>
+
+    <h2>Our target</h2>
+    <p>This site aims to conform to the <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a>, Level AA.</p>
+
+    <h2>What we do</h2>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="story.html">Our Story</a></li>
-      <li><a href="index.html#visit">Find Us</a></li>
+      <li>Semantic HTML with real buttons, links, and headings that assistive technology can read</li>
+      <li>Full keyboard operability with a visible focus indicator on every interactive element</li>
+      <li>Text contrast that meets or exceeds the 4.5:1 minimum</li>
+      <li>Text descriptions for meaningful images</li>
+      <li>Moving content that pauses on hover, via the "Pause motion" control, and automatically for visitors with a reduced-motion preference</li>
+      <li>Layouts that work at 200%–400% zoom and on small screens</li>
+      <li>Automated and manual accessibility testing before updates go live, with dated records kept</li>
     </ul>
-  </nav>
-</header>
 
-<main id="main">
-  <h1>Accessibility<span class="dot">.</span></h1>
+    <h2>Known limitations</h2>
+    <p>The homepage's main artwork contains stylized text as part of the illustration. Its content is provided in the page's heading and image description, and every action shown in the artwork is available as a real button or link on the page.</p>
 
-  <p>Everyone should be able to find us, read our menu, and order a kabab — whatever device or assistive technology they use. That's the standard we build this website to.</p>
+    <h2>Tell us if something isn't working</h2>
+    <div class="card">
+      <p>If any part of this site is hard to use with your assistive technology, we want to know and we'll fix it.</p>
+      <p><strong>Phone:</strong> <a href="tel:+19094819099">(909) 481-9099</a> (open daily 11 AM – 9 PM)<br>
+      <strong>Email:</strong> <a href="mailto:info@wowkabab.com">info@wowkabab.com</a></p>
+      <p>We aim to respond within 2 business days.</p>
+    </div>
 
-  <h2>Our target</h2>
-  <p>This site aims to conform to the <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a>, Level AA.</p>
-
-  <h2>What we do</h2>
-  <ul>
-    <li>Semantic HTML with real buttons, links, and headings that assistive technology can read</li>
-    <li>Full keyboard operability with a visible focus indicator on every interactive element</li>
-    <li>Text contrast that meets or exceeds the 4.5:1 minimum</li>
-    <li>Text descriptions for meaningful images</li>
-    <li>Moving content that pauses on hover, via the "Pause motion" control, and automatically for visitors with a reduced-motion preference</li>
-    <li>Layouts that work at 200%–400% zoom and on small screens</li>
-    <li>Automated and manual accessibility testing before updates go live, with dated records kept</li>
-  </ul>
-
-  <h2>Known limitations</h2>
-  <p>The homepage's main artwork contains stylized text as part of the illustration. Its content is provided in the page's heading and image description, and every action shown in the artwork is available as a real button or link on the page.</p>
-
-  <h2>Tell us if something isn't working</h2>
-  <div class="card">
-    <p>If any part of this site is hard to use with your assistive technology, we want to know and we'll fix it.</p>
-    <p><strong>Phone:</strong> <a href="tel:+19094819099">(909) 481-9099</a> (open daily 11 AM – 9 PM)<br>
-    <strong>Email:</strong> <a href="mailto:info@wowkabab.com">info@wowkabab.com</a></p>
-    <p>We aim to respond within 2 business days.</p>
-  </div>
-
-  <p><em>This statement was last reviewed on August 18, 2026.</em></p>
-</main>
+    <p><em>This statement was last reviewed on August 18, 2026.</em></p>
+  </main>
+</div>
 
 <footer class="site-footer">
   <nav aria-label="Footer">

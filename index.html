@@ -55,9 +55,9 @@ body.motion-paused *{animation-play-state:paused !important}
 .btn-cream:hover{background:var(--white)}
 
 /* ---------- shell: rail first in DOM, right visually; art column widened ---------- */
-.shell{max-width:1560px;margin:0 auto;padding:1rem 1rem 0;display:grid;grid-template-columns:1fr;gap:1.25rem}
+.shell{max-width:1180px;margin:0 auto;padding:1.25rem 1.25rem 0;display:grid;grid-template-columns:1fr;gap:1.25rem}
 @media (min-width:1000px){
-  .shell{grid-template-columns:minmax(0,1fr) 300px;align-items:start;gap:1.5rem;padding-top:1.25rem}
+  .shell{grid-template-columns:minmax(0,1fr) 280px;align-items:start;gap:1.5rem;padding-top:1.5rem}
   .rail{grid-column:2;grid-row:1}
   .art-col{grid-column:1;grid-row:1}
 }
@@ -87,20 +87,15 @@ body.motion-paused *{animation-play-state:paused !important}
 /* ---------- WHITE art column panel ---------- */
 .art-col{min-width:0;background:var(--panel);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.45);padding-bottom:1.5rem}
 
-/* nav pill contained inside the mural */
-.hero{background:var(--red);position:relative}
+/* nav pill lives inside the mural's red area, in normal flow — never covers the artwork */
+.hero{background:var(--red);position:relative;padding-top:.9rem}
 .hero > img{display:block;width:100%;height:auto}
 .site-header{
   background:var(--ink);color:var(--white);
   border-radius:999px;padding:.55rem 1.1rem;
+  margin:0 .9rem .35rem;
   display:flex;align-items:center;justify-content:space-between;gap:.75rem;
-}
-@media (min-width:1000px){
-  .site-header{position:absolute;top:1.1rem;left:1.1rem;right:1.1rem;z-index:5}
-}
-@media (max-width:999px){
-  .site-header{margin:.9rem .9rem 0;position:relative;z-index:5}
-  .hero{padding-top:.1rem}
+  position:relative;z-index:5;
 }
 .brand{display:flex;align-items:center;text-decoration:none;flex-shrink:1;min-width:0}
 .brand svg{height:30px;width:auto;display:block}

@@ -9,52 +9,52 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Baloo+2:wght@800&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#171415;--card:#231F20;--line:#3A3536;--red:#CB1214;--red-deep:#A00E10;--green:#186A34;--green-deep:#0F4D24;--lime:#A7C23D;--cream:#FBF4E3;--white:#FFFFFF}
+:root{--bg:#171415;--panel:#FBF4E3;--ink:#231F20;--line-light:#E4DCC9;--red:#CB1214;--red-deep:#A00E10;--green:#186A34;--green-deep:#0F4D24;--lime:#A7C23D;--white:#FFFFFF}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:6rem}
+html{scroll-behavior:smooth;scroll-padding-top:2rem}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--cream);line-height:1.65}
-:focus-visible{outline:3px solid var(--lime);outline-offset:2px;box-shadow:0 0 0 6px var(--bg),0 0 0 9px var(--lime);border-radius:4px}
-.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--cream);color:var(--card);padding:.75rem 1.25rem;font-weight:800}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--lime);border-radius:4px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--panel);color:var(--ink);padding:.75rem 1.25rem;font-weight:800}
 .skip-link:focus{left:0}
-.chunk{font-family:'Titan One',sans-serif;text-transform:uppercase;line-height:.98;letter-spacing:.01em}
-.site-header{position:sticky;top:.6rem;z-index:50;max-width:1360px;width:calc(100% - 1.2rem);margin:.6rem auto 0;background:var(--card);color:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.chunk{font-family:'Titan One',sans-serif;text-transform:uppercase;line-height:.98}
+.panel{max-width:900px;margin:1.25rem auto;background:var(--panel);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.45);overflow:hidden;padding-bottom:2rem}
+.site-header{background:var(--ink);color:var(--white);border-radius:999px;padding:.55rem 1.1rem;margin:.9rem .9rem .5rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
 .brand{display:flex;align-items:center;text-decoration:none}
 .brand svg{height:30px;width:auto;display:block}
 .site-nav ul{list-style:none;display:flex;gap:.35rem;flex-wrap:wrap}
-.site-nav a{color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-radius:999px;border:2px solid transparent}
+.site-nav a{color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;font-size:.75rem;letter-spacing:.08em;padding:.5rem .9rem;border-radius:999px;border:2px solid transparent}
 .site-nav a:hover{border-color:var(--lime)}
-.site-nav a[aria-current="page"]{background:var(--cream);color:var(--card)}
-@media (max-width:560px){.site-header{padding:.5rem .8rem;top:.4rem}.brand svg{height:22px}.site-nav a{font-size:.62rem;padding:.45rem .6rem;letter-spacing:.04em}}
-.btn{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.92rem;padding:.85rem 1.6rem;border-radius:10px;text-decoration:none;cursor:pointer;border:3px solid var(--card);box-shadow:4px 4px 0 rgba(0,0,0,.6);text-align:center}
-.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(0,0,0,.6)}
+.site-nav a[aria-current="page"]{background:var(--panel);color:var(--ink)}
+@media (max-width:560px){.brand svg{height:20px}.site-nav a{font-size:.6rem;padding:.4rem .55rem;letter-spacing:.03em}}
+.btn{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.92rem;padding:.85rem 1.6rem;border-radius:10px;text-decoration:none;cursor:pointer;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);text-align:center}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
 .btn-green{background:var(--green);color:var(--white)}
 .btn-green:hover{background:var(--green-deep)}
-main{max-width:820px;margin:0 auto;padding:2.5rem 1.25rem 3rem}
-.menu-hero{margin-bottom:2.5rem}
-.eyebrow{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--lime);margin-bottom:.5rem}
-h1{font-size:clamp(2.4rem,7vw,4rem);color:var(--cream)}
-h1 .dot{color:var(--lime)}
+main{padding:1.5rem 1.75rem 0}
+.eyebrow{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:.5rem}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);color:var(--ink)}
+h1 .dot{color:var(--green)}
 .menu-hero p{max-width:60ch;margin-top:.9rem}
 .menu-hero .btn{margin-top:1.4rem}
-.menu-cat{background:var(--card);border:1.5px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.5);padding:1.8rem 1.6rem;margin-bottom:1.8rem}
-.menu-cat h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:clamp(1.4rem,3.5vw,1.9rem);margin-bottom:.3rem;color:var(--cream)}
-.menu-cat h2 .dot{color:var(--lime)}
-.cat-note{color:#C9C2B6;font-size:.92rem;margin-bottom:1.2rem;max-width:58ch}
+.menu-cat{background:var(--white);border:2px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 var(--ink);padding:1.7rem 1.5rem;margin:1.6rem 0}
+.menu-cat h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:clamp(1.4rem,3.5vw,1.8rem);margin-bottom:.3rem;color:var(--ink)}
+.menu-cat h2 .dot{color:var(--green)}
+.cat-note{color:#5C564F;font-size:.92rem;margin-bottom:1.2rem;max-width:58ch}
 .menu-list{list-style:none}
 .menu-list li{padding:.8rem 0}
-.menu-list li + li{border-top:1px solid var(--line)}
+.menu-list li + li{border-top:1px solid var(--line-light)}
 .menu-line{display:flex;align-items:baseline;gap:.6rem}
-.item-name{font-weight:700;font-size:1.05rem;color:var(--cream)}
-.leader{flex:1;min-width:1.5rem;border-bottom:2px dotted #5A5456;transform:translateY(-4px)}
-.price{font-weight:800;color:var(--lime);white-space:nowrap}
-.item-desc{max-width:56ch;font-size:.92rem;color:#C9C2B6;margin-top:.15rem}
-.diet-tag{display:inline-block;margin-top:.45rem;background:transparent;border:1.5px solid var(--lime);color:var(--lime);font-size:.72rem;font-weight:800;padding:.12rem .55rem;text-transform:uppercase;letter-spacing:.05em;border-radius:999px}
-.allergy{margin-top:.5rem;max-width:60ch}
-.site-footer{background:var(--card);border-top:1.5px solid var(--line);color:var(--cream);text-align:center;padding:2.2rem 1rem;margin-top:2rem}
+.item-name{font-weight:700;font-size:1.05rem;color:var(--ink)}
+.leader{flex:1;min-width:1.5rem;border-bottom:2px dotted #B8AF9D;transform:translateY(-4px)}
+.price{font-weight:800;color:var(--red);white-space:nowrap}
+.item-desc{max-width:56ch;font-size:.92rem;color:#5C564F;margin-top:.15rem}
+.diet-tag{display:inline-block;margin-top:.45rem;border:1.5px solid var(--green);color:var(--green);font-size:.72rem;font-weight:800;padding:.12rem .55rem;text-transform:uppercase;letter-spacing:.05em;border-radius:999px}
+.allergy{margin-top:1.25rem;max-width:60ch}
+.site-footer{background:var(--bg);color:var(--panel);text-align:center;padding:2.2rem 1rem}
 .site-footer a{color:var(--lime);font-weight:600}
 .site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
-.site-footer nav a{color:var(--cream);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
+.site-footer nav a{color:var(--panel);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
 .site-footer nav a:hover{color:var(--lime)}
 </style>
 </head>
@@ -62,109 +62,109 @@ h1 .dot{color:var(--lime)}
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
-    <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
-      <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
-        <text x="0" y="47">W</text>
-        <text x="80" y="47">W</text>
-        <text x="124" y="47" fill="#A7C23D">!</text>
-        <text x="148" y="47" letter-spacing="1">KABAB</text>
-      </g>
-      <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
-      <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
-      <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
-      <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
-    </svg>
-  </a>
-  <nav class="site-nav" aria-label="Main">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html" aria-current="page">Menu</a></li>
-      <li><a href="story.html">Our Story</a></li>
-      <li><a href="index.html#visit">Find Us</a></li>
-    </ul>
-  </nav>
-</header>
+<div class="panel">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
+      <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
+        <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
+          <text x="0" y="47">W</text>
+          <text x="80" y="47">W</text>
+          <text x="124" y="47" fill="#A7C23D">!</text>
+          <text x="148" y="47" letter-spacing="1">KABAB</text>
+        </g>
+        <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
+        <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
+        <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
+        <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
+      </svg>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" aria-current="page">Menu</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="index.html#visit">Find Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main id="main">
+  <main id="main">
+    <div class="menu-hero">
+      <p class="eyebrow">Open daily 11 AM – 9 PM · Order by phone</p>
+      <h1 class="chunk">The menu<span class="dot">.</span></h1>
+      <p>Everything is made to order. Call ahead and we'll have it ready for pickup.</p>
+      <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
+    </div>
 
-  <div class="menu-hero">
-    <p class="eyebrow">Open daily 11 AM – 9 PM · Order by phone</p>
-    <h1 class="chunk">The menu<span class="dot">.</span></h1>
-    <p>Everything is made to order. Call ahead and we'll have it ready for pickup.</p>
-    <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
-  </div>
+    <section class="menu-cat" aria-labelledby="cat-wraps">
+      <h2 id="cat-wraps">Wraps<span class="dot">.</span></h2>
+      <p class="cat-note">Warm flatbread, garlic sauce, pickles and fresh salad unless you say otherwise.</p>
+      <ul class="menu-list">
+        <li>
+          <div class="menu-line"><span class="item-name">Beef Shawarma Wrap</span><span class="leader" aria-hidden="true"></span><span class="price">$11.99</span></div>
+          <p class="item-desc">Marinated beef carved off the spit, wrapped hot.</p>
+        </li>
+        <li>
+          <div class="menu-line"><span class="item-name">Chicken Shawarma Wrap</span><span class="leader" aria-hidden="true"></span><span class="price">$10.99</span></div>
+          <p class="item-desc">Spiced chicken shawarma with garlic sauce and pickles.</p>
+        </li>
+        <li>
+          <div class="menu-line"><span class="item-name">Falafel Wrap</span><span class="leader" aria-hidden="true"></span><span class="price">$9.99</span></div>
+          <p class="item-desc">Crisp falafel, hummus, tahini, pickled vegetables.</p>
+          <p><span class="diet-tag">Vegan</span></p>
+        </li>
+      </ul>
+    </section>
 
-  <section class="menu-cat" aria-labelledby="cat-wraps">
-    <h2 id="cat-wraps">Wraps<span class="dot">.</span></h2>
-    <p class="cat-note">Warm flatbread, garlic sauce, pickles and fresh salad unless you say otherwise.</p>
-    <ul class="menu-list">
-      <li>
-        <div class="menu-line"><span class="item-name">Beef Shawarma Wrap</span><span class="leader" aria-hidden="true"></span><span class="price">$11.99</span></div>
-        <p class="item-desc">Marinated beef carved off the spit, wrapped hot.</p>
-      </li>
-      <li>
-        <div class="menu-line"><span class="item-name">Chicken Shawarma Wrap</span><span class="leader" aria-hidden="true"></span><span class="price">$10.99</span></div>
-        <p class="item-desc">Spiced chicken shawarma with garlic sauce and pickles.</p>
-      </li>
-      <li>
-        <div class="menu-line"><span class="item-name">Falafel Wrap</span><span class="leader" aria-hidden="true"></span><span class="price">$9.99</span></div>
-        <p class="item-desc">Crisp falafel, hummus, tahini, pickled vegetables.</p>
-        <p><span class="diet-tag">Vegan</span></p>
-      </li>
-    </ul>
-  </section>
+    <section class="menu-cat" aria-labelledby="cat-plates">
+      <h2 id="cat-plates">Plates<span class="dot">.</span></h2>
+      <p class="cat-note">Served over seasoned rice with salad, sauces and fresh bread.</p>
+      <ul class="menu-list">
+        <li><div class="menu-line"><span class="item-name">Beef Shawarma Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$15.99</span></div></li>
+        <li><div class="menu-line"><span class="item-name">Chicken Shawarma Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$14.99</span></div></li>
+        <li>
+          <div class="menu-line"><span class="item-name">Kabob Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$15.99</span></div>
+          <p class="item-desc">Char-grilled kabobs with grilled vegetables.</p>
+        </li>
+        <li>
+          <div class="menu-line"><span class="item-name">Mixed Grill Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$18.99</span></div>
+          <p class="item-desc">Shawarma and kabob together — the best of both spits.</p>
+        </li>
+        <li>
+          <div class="menu-line"><span class="item-name">Falafel Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$12.99</span></div>
+          <p><span class="diet-tag">Vegan</span></p>
+        </li>
+      </ul>
+    </section>
 
-  <section class="menu-cat" aria-labelledby="cat-plates">
-    <h2 id="cat-plates">Plates<span class="dot">.</span></h2>
-    <p class="cat-note">Served over seasoned rice with salad, sauces and fresh bread.</p>
-    <ul class="menu-list">
-      <li><div class="menu-line"><span class="item-name">Beef Shawarma Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$15.99</span></div></li>
-      <li><div class="menu-line"><span class="item-name">Chicken Shawarma Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$14.99</span></div></li>
-      <li>
-        <div class="menu-line"><span class="item-name">Kabob Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$15.99</span></div>
-        <p class="item-desc">Char-grilled kabobs with grilled vegetables.</p>
-      </li>
-      <li>
-        <div class="menu-line"><span class="item-name">Mixed Grill Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$18.99</span></div>
-        <p class="item-desc">Shawarma and kabob together — the best of both spits.</p>
-      </li>
-      <li>
-        <div class="menu-line"><span class="item-name">Falafel Plate</span><span class="leader" aria-hidden="true"></span><span class="price">$12.99</span></div>
-        <p><span class="diet-tag">Vegan</span></p>
-      </li>
-    </ul>
-  </section>
+    <section class="menu-cat" aria-labelledby="cat-sides">
+      <h2 id="cat-sides">Sides<span class="dot">.</span></h2>
+      <ul class="menu-list">
+        <li><div class="menu-line"><span class="item-name">Seasoned Fries</span><span class="leader" aria-hidden="true"></span><span class="price">$4.99</span></div></li>
+        <li>
+          <div class="menu-line"><span class="item-name">Hummus &amp; Bread</span><span class="leader" aria-hidden="true"></span><span class="price">$5.99</span></div>
+          <p><span class="diet-tag">Vegan</span></p>
+        </li>
+        <li>
+          <div class="menu-line"><span class="item-name">Garden Salad</span><span class="leader" aria-hidden="true"></span><span class="price">$4.99</span></div>
+          <p><span class="diet-tag">Vegan</span></p>
+        </li>
+        <li><div class="menu-line"><span class="item-name">Garlic Sauce (extra)</span><span class="leader" aria-hidden="true"></span><span class="price">$0.99</span></div></li>
+      </ul>
+    </section>
 
-  <section class="menu-cat" aria-labelledby="cat-sides">
-    <h2 id="cat-sides">Sides<span class="dot">.</span></h2>
-    <ul class="menu-list">
-      <li><div class="menu-line"><span class="item-name">Seasoned Fries</span><span class="leader" aria-hidden="true"></span><span class="price">$4.99</span></div></li>
-      <li>
-        <div class="menu-line"><span class="item-name">Hummus &amp; Bread</span><span class="leader" aria-hidden="true"></span><span class="price">$5.99</span></div>
-        <p><span class="diet-tag">Vegan</span></p>
-      </li>
-      <li>
-        <div class="menu-line"><span class="item-name">Garden Salad</span><span class="leader" aria-hidden="true"></span><span class="price">$4.99</span></div>
-        <p><span class="diet-tag">Vegan</span></p>
-      </li>
-      <li><div class="menu-line"><span class="item-name">Garlic Sauce (extra)</span><span class="leader" aria-hidden="true"></span><span class="price">$0.99</span></div></li>
-    </ul>
-  </section>
+    <section class="menu-cat" aria-labelledby="cat-kids">
+      <h2 id="cat-kids">Kids<span class="dot">.</span></h2>
+      <p class="cat-note">Smaller plates for smaller appetites.</p>
+      <ul class="menu-list">
+        <li><div class="menu-line"><span class="item-name">Kids Chicken &amp; Rice</span><span class="leader" aria-hidden="true"></span><span class="price">$7.99</span></div></li>
+        <li><div class="menu-line"><span class="item-name">Kids Wrap &amp; Fries</span><span class="leader" aria-hidden="true"></span><span class="price">$7.99</span></div></li>
+      </ul>
+    </section>
 
-  <section class="menu-cat" aria-labelledby="cat-kids">
-    <h2 id="cat-kids">Kids<span class="dot">.</span></h2>
-    <p class="cat-note">Smaller plates for smaller appetites.</p>
-    <ul class="menu-list">
-      <li><div class="menu-line"><span class="item-name">Kids Chicken &amp; Rice</span><span class="leader" aria-hidden="true"></span><span class="price">$7.99</span></div></li>
-      <li><div class="menu-line"><span class="item-name">Kids Wrap &amp; Fries</span><span class="leader" aria-hidden="true"></span><span class="price">$7.99</span></div></li>
-    </ul>
-  </section>
-
-  <p class="allergy"><strong>Allergies or dietary needs?</strong> Tell us when you order — we'll walk you through what's in everything.</p>
-
-</main>
+    <p class="allergy"><strong>Allergies or dietary needs?</strong> Tell us when you order — we'll walk you through what's in everything.</p>
+  </main>
+</div>
 
 <footer class="site-footer">
   <nav aria-label="Footer">

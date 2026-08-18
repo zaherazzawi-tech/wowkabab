@@ -9,46 +9,47 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Baloo+2:wght@800&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#171415;--card:#231F20;--line:#3A3536;--red:#CB1214;--red-deep:#A00E10;--green:#186A34;--green-deep:#0F4D24;--lime:#A7C23D;--cream:#FBF4E3;--white:#FFFFFF}
+:root{--bg:#171415;--panel:#FBF4E3;--ink:#231F20;--line-light:#E4DCC9;--red:#CB1214;--red-deep:#A00E10;--green:#186A34;--green-deep:#0F4D24;--lime:#A7C23D;--white:#FFFFFF}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:6rem}
+html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--cream);line-height:1.7}
-:focus-visible{outline:3px solid var(--lime);outline-offset:2px;box-shadow:0 0 0 6px var(--bg),0 0 0 9px var(--lime);border-radius:4px}
-.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--cream);color:var(--card);padding:.75rem 1.25rem;font-weight:800}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--lime);border-radius:4px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--panel);color:var(--ink);padding:.75rem 1.25rem;font-weight:800}
 .skip-link:focus{left:0}
 .chunk{font-family:'Titan One',sans-serif;text-transform:uppercase;line-height:.98}
-.site-header{position:sticky;top:.6rem;z-index:50;max-width:1360px;width:calc(100% - 1.2rem);margin:.6rem auto 0;background:var(--card);color:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.panel{max-width:860px;margin:1.25rem auto;background:var(--panel);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.45);overflow:hidden;padding-bottom:2rem}
+.site-header{background:var(--ink);color:var(--white);border-radius:999px;padding:.55rem 1.1rem;margin:.9rem .9rem .5rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
 .brand{display:flex;align-items:center;text-decoration:none}
 .brand svg{height:30px;width:auto;display:block}
 .site-nav ul{list-style:none;display:flex;gap:.35rem;flex-wrap:wrap}
-.site-nav a{color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-radius:999px;border:2px solid transparent}
+.site-nav a{color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;font-size:.75rem;letter-spacing:.08em;padding:.5rem .9rem;border-radius:999px;border:2px solid transparent}
 .site-nav a:hover{border-color:var(--lime)}
-.site-nav a[aria-current="page"]{background:var(--cream);color:var(--card)}
-@media (max-width:560px){.site-header{padding:.5rem .8rem;top:.4rem}.brand svg{height:22px}.site-nav a{font-size:.62rem;padding:.45rem .6rem;letter-spacing:.04em}}
-.btn{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.92rem;padding:.85rem 1.6rem;border-radius:10px;text-decoration:none;cursor:pointer;border:3px solid var(--card);box-shadow:4px 4px 0 rgba(0,0,0,.6);text-align:center}
-.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(0,0,0,.6)}
+.site-nav a[aria-current="page"]{background:var(--panel);color:var(--ink)}
+@media (max-width:560px){.brand svg{height:20px}.site-nav a{font-size:.6rem;padding:.4rem .55rem;letter-spacing:.03em}}
+.btn{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.92rem;padding:.85rem 1.6rem;border-radius:10px;text-decoration:none;cursor:pointer;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);text-align:center}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
 .btn-red{background:var(--red);color:var(--white)}
 .btn-red:hover{background:var(--red-deep)}
 .btn-green{background:var(--green);color:var(--white)}
 .btn-green:hover{background:var(--green-deep)}
-main{max-width:760px;margin:0 auto;padding:2.5rem 1.25rem 3.5rem}
-.eyebrow{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--lime);margin-bottom:.5rem}
-h1{font-size:clamp(2.4rem,7vw,4rem);color:var(--cream)}
-h1 .dot{color:var(--lime)}
-.story-photo{width:100%;max-height:440px;object-fit:cover;display:block;border:1.5px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.5);margin:2rem 0}
-.story-body{font-size:1.08rem}
-.story-body p{margin-bottom:1.4rem;max-width:66ch}
+main{padding:1.5rem 1.75rem 0}
+.eyebrow{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:.5rem}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);color:var(--ink)}
+h1 .dot{color:var(--green)}
+.story-photo{width:100%;max-height:420px;object-fit:cover;display:block;border:2px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 var(--ink);margin:1.75rem 0}
+.story-body{font-size:1.06rem}
+.story-body p{margin-bottom:1.35rem;max-width:66ch}
 .pull{
   font-family:'Titan One',sans-serif;text-transform:uppercase;
-  font-size:clamp(1.5rem,4.2vw,2.3rem);line-height:1.1;color:var(--cream);
-  border-left:6px solid var(--lime);padding-left:1.2rem;margin:2.4rem 0;max-width:24ch;
+  font-size:clamp(1.5rem,4.2vw,2.2rem);line-height:1.1;color:var(--ink);
+  border-left:6px solid var(--green);padding-left:1.2rem;margin:2.2rem 0;max-width:24ch;
 }
-.cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.2rem}
-.site-footer{background:var(--card);border-top:1.5px solid var(--line);color:var(--cream);text-align:center;padding:2.2rem 1rem}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.site-footer{background:var(--bg);color:var(--panel);text-align:center;padding:2.2rem 1rem}
 .site-footer a{color:var(--lime);font-weight:600}
 .site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
-.site-footer nav a{color:var(--cream);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
+.site-footer nav a{color:var(--panel);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
 .site-footer nav a:hover{color:var(--lime)}
 </style>
 </head>
@@ -56,53 +57,55 @@ h1 .dot{color:var(--lime)}
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
-    <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
-      <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
-        <text x="0" y="47">W</text>
-        <text x="80" y="47">W</text>
-        <text x="124" y="47" fill="#A7C23D">!</text>
-        <text x="148" y="47" letter-spacing="1">KABAB</text>
-      </g>
-      <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
-      <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
-      <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
-      <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
-    </svg>
-  </a>
-  <nav class="site-nav" aria-label="Main">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="story.html" aria-current="page">Our Story</a></li>
-      <li><a href="index.html#visit">Find Us</a></li>
-    </ul>
-  </nav>
-</header>
+<div class="panel">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
+      <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
+        <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
+          <text x="0" y="47">W</text>
+          <text x="80" y="47">W</text>
+          <text x="124" y="47" fill="#A7C23D">!</text>
+          <text x="148" y="47" letter-spacing="1">KABAB</text>
+        </g>
+        <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
+        <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
+        <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
+        <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
+      </svg>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="story.html" aria-current="page">Our Story</a></li>
+        <li><a href="index.html#visit">Find Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main id="main">
-  <p class="eyebrow">Wow Kabab · Masi Plaza</p>
-  <h1 class="chunk">Our story<span class="dot">.</span></h1>
+  <main id="main">
+    <p class="eyebrow">Wow Kabab · Masi Plaza</p>
+    <h1 class="chunk">Our story<span class="dot">.</span></h1>
 
-  <img class="story-photo" src="images/kabab_1.jpg" alt="Beef and chicken shawarma stacked on two vertical rotisserie spits over glowing burners">
+    <img class="story-photo" src="images/kabab_1.jpg" alt="Beef and chicken shawarma stacked on two vertical rotisserie spits over glowing burners">
 
-  <div class="story-body">
-    <p>Some food you can fake. Shawarma isn't one of them.</p>
-    <p>It has to be stacked by hand in the morning, seasoned right, and carved off the spit while the outside is still crackling. That's the slow way, and it's the only way we do it. Walk into our kitchen in Masi Plaza and the first thing you'll see is the spits turning — beef on one, chicken on the other, all day.</p>
+    <div class="story-body">
+      <p>Some food you can fake. Shawarma isn't one of them.</p>
+      <p>It has to be stacked by hand in the morning, seasoned right, and carved off the spit while the outside is still crackling. That's the slow way, and it's the only way we do it. Walk into our kitchen in Masi Plaza and the first thing you'll see is the spits turning — beef on one, chicken on the other, all day.</p>
 
-    <p class="pull">Stacked by hand. Carved to order<span style="color:var(--lime)">.</span></p>
+      <p class="pull">Stacked by hand. Carved to order<span style="color:var(--green)">.</span></p>
 
-    <p>The rest of the menu follows the same rule. Kabobs go over a real grill. Falafel gets fried when you order it, not before. The garlic sauce is made here. The bread is warm when it hits your hands.</p>
-    <p>We keep it casual because good food doesn't need a show. Come in a suit, come in gym clothes, bring the kids — there's a menu for them too, and enough vegan options that nobody at the table settles.</p>
-    <p>That's the whole story. Fresh fire, sharp knife, and food worth saying "wow" about.</p>
-  </div>
+      <p>The rest of the menu follows the same rule. Kabobs go over a real grill. Falafel gets fried when you order it, not before. The garlic sauce is made here. The bread is warm when it hits your hands.</p>
+      <p>We keep it casual because good food doesn't need a show. Come in a suit, come in gym clothes, bring the kids — there's a menu for them too, and enough vegan options that nobody at the table settles.</p>
+      <p>That's the whole story. Fresh fire, sharp knife, and food worth saying "wow" about.</p>
+    </div>
 
-  <div class="cta-row">
-    <a class="btn btn-red" href="menu.html">See the menu</a>
-    <a class="btn btn-green" href="tel:+19094819099">Call to order</a>
-  </div>
-</main>
+    <div class="cta-row">
+      <a class="btn btn-red" href="menu.html">See the menu</a>
+      <a class="btn btn-green" href="tel:+19094819099">Call to order</a>
+    </div>
+  </main>
+</div>
 
 <footer class="site-footer">
   <nav aria-label="Footer">
