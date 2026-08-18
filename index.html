@@ -10,216 +10,234 @@
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Baloo+2:wght@800&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#171415;          /* sleek near-black page */
-  --card:#231F20;        /* card/nav ink */
-  --line:#3A3536;        /* subtle borders on dark */
+  --bg:#171415;          /* black page frame */
+  --panel:#FBF4E3;       /* cream column panels */
+  --ink:#231F20;
+  --line-dark:#3A3536;
+  --line-light:#E4DCC9;
   --red:#CB1214;
   --red-deep:#A00E10;
   --green:#186A34;
   --green-deep:#0F4D24;
-  --lime:#A7C23D;        /* labels + accents on dark: 7.9:1 */
-  --cream:#FBF4E3;
+  --lime:#A7C23D;        /* dark surfaces only */
   --white:#FFFFFF;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:6rem}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--cream);line-height:1.6;overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:2rem}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:clip}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important;transition:none !important}
 }
 body.motion-paused *{animation-play-state:paused !important}
 
-:focus-visible{outline:3px solid var(--lime);outline-offset:2px;box-shadow:0 0 0 6px var(--bg),0 0 0 9px var(--lime);border-radius:4px}
+/* dual-ring focus: ink ring shows on cream, lime halo shows on black */
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--lime);border-radius:4px}
 
-.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--cream);color:var(--card);padding:.75rem 1.25rem;font-weight:800}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--panel);color:var(--ink);padding:.75rem 1.25rem;font-weight:800}
 .skip-link:focus{left:0}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 .chunk{font-family:'Titan One',system-ui,sans-serif;text-transform:uppercase;line-height:.95;letter-spacing:.01em}
 
-/* ---------- header ---------- */
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+  font-size:.92rem;padding:.85rem 1.6rem;border-radius:10px;text-decoration:none;cursor:pointer;
+  border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);text-align:center;
+}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-red{background:var(--red);color:var(--white)}
+.btn-red:hover{background:var(--red-deep)}
+.btn-green{background:var(--green);color:var(--white)}
+.btn-green:hover{background:var(--green-deep)}
+.btn-cream{background:var(--panel);color:var(--ink)}
+.btn-cream:hover{background:var(--white)}
+
+/* ---------- shell: rail first in DOM, right visually; art column widened ---------- */
+.shell{max-width:1560px;margin:0 auto;padding:1rem 1rem 0;display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media (min-width:1000px){
+  .shell{grid-template-columns:minmax(0,1fr) 300px;align-items:start;gap:1.5rem;padding-top:1.25rem}
+  .rail{grid-column:2;grid-row:1}
+  .art-col{grid-column:1;grid-row:1}
+}
+
+/* ---------- WHITE functional rail ---------- */
+.rail{display:none}
+@media (min-width:1000px){
+  .rail{
+    display:block;position:sticky;top:1.25rem;
+    max-height:calc(100vh - 2.5rem);overflow-y:auto;
+    background:var(--white);color:var(--ink);
+    border-radius:18px;padding:1.4rem 1.2rem;
+    box-shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+}
+.rail h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.1rem;margin-bottom:1.1rem;color:var(--ink)}
+.rail .btn{display:block;width:100%;margin-bottom:.65rem;font-size:.8rem;padding:.8rem 1rem}
+.rail-info{margin-top:1.3rem;border-top:1.5px solid var(--line-light);padding-top:1.1rem}
+.rail-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:.35rem}
+.rail-info p, .rail-info address{font-style:normal;font-size:.9rem;color:var(--ink);margin-bottom:1rem}
+.pause-motion-btn{
+  width:100%;background:var(--white);color:var(--ink);border:2px solid var(--ink);border-radius:10px;
+  font-weight:800;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;padding:.7rem;cursor:pointer;
+}
+.pause-motion-btn:hover{background:var(--panel)}
+
+/* ---------- WHITE art column panel ---------- */
+.art-col{min-width:0;background:var(--panel);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.45);padding-bottom:1.5rem}
+
+/* nav pill contained inside the mural */
+.hero{background:var(--red);position:relative}
+.hero > img{display:block;width:100%;height:auto}
 .site-header{
-  position:sticky;top:.6rem;z-index:50;
-  max-width:1360px;width:calc(100% - 1.2rem);margin:.6rem auto 0;
-  background:var(--card);color:var(--white);
-  border:1.5px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;
+  background:var(--ink);color:var(--white);
+  border-radius:999px;padding:.55rem 1.1rem;
   display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+}
+@media (min-width:1000px){
+  .site-header{position:absolute;top:1.1rem;left:1.1rem;right:1.1rem;z-index:5}
+}
+@media (max-width:999px){
+  .site-header{margin:.9rem .9rem 0;position:relative;z-index:5}
+  .hero{padding-top:.1rem}
 }
 .brand{display:flex;align-items:center;text-decoration:none;flex-shrink:1;min-width:0}
 .brand svg{height:30px;width:auto;display:block}
 .site-nav ul{list-style:none;display:flex;gap:.35rem;flex-wrap:wrap}
 .site-nav a{
   color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;
-  font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-radius:999px;border:2px solid transparent;
+  font-size:.75rem;letter-spacing:.08em;padding:.5rem .9rem;border-radius:999px;border:2px solid transparent;
 }
 .site-nav a:hover{border-color:var(--lime)}
-.site-nav a[aria-current="page"]{background:var(--cream);color:var(--card)}
+.site-nav a[aria-current="page"]{background:var(--panel);color:var(--ink)}
 @media (max-width:560px){
-  .site-header{padding:.5rem .8rem;top:.4rem}
-  .brand svg{height:22px}
-  .site-nav a{font-size:.62rem;padding:.45rem .6rem;letter-spacing:.04em}
+  .brand svg{height:20px}
+  .site-nav a{font-size:.6rem;padding:.4rem .55rem;letter-spacing:.03em}
 }
 
-/* ---------- buttons ---------- */
-.btn{
-  display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
-  font-size:.92rem;padding:.85rem 1.6rem;border-radius:10px;text-decoration:none;cursor:pointer;
-  border:3px solid var(--card);box-shadow:4px 4px 0 rgba(0,0,0,.6);text-align:center;
-}
-.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(0,0,0,.6)}
-.btn-red{background:var(--red);color:var(--white)}
-.btn-red:hover{background:var(--red-deep)}
-.btn-green{background:var(--green);color:var(--white)}
-.btn-green:hover{background:var(--green-deep)}
-.btn-cream{background:var(--cream);color:var(--card)}
-
-/* ---------- shell: rail first in DOM, right visually ---------- */
-.shell{max-width:1360px;margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:1fr;gap:1.5rem}
-@media (min-width:1000px){
-  .shell{grid-template-columns:minmax(0,1fr) 300px;align-items:start;gap:2rem}
-  .rail{grid-column:2;grid-row:1}
-  .art-col{grid-column:1;grid-row:1}
-}
-
-/* ---------- rail: buttons on top, quiet info below ---------- */
-.rail{display:none}
-@media (min-width:1000px){
-  .rail{
-    display:block;position:sticky;top:5.2rem;
-    max-height:calc(100vh - 6.2rem);overflow-y:auto;
-    background:var(--card);border:1.5px solid var(--line);border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,.5);
-    padding:1.4rem 1.2rem;
-  }
-}
-.rail h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.1rem;margin-bottom:1.1rem;color:var(--cream)}
-.rail .btn{display:block;width:100%;margin-bottom:.65rem;font-size:.8rem;padding:.8rem 1rem}
-.rail-info{margin-top:1.3rem;border-top:1.5px solid var(--line);padding-top:1.1rem}
-.rail-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--lime);margin-bottom:.35rem}
-.rail-info p, .rail-info address{font-style:normal;font-size:.9rem;color:var(--cream);margin-bottom:1rem}
-.pause-motion-btn{
-  width:100%;background:transparent;color:var(--cream);border:2px solid var(--line);border-radius:10px;
-  font-weight:800;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;padding:.7rem;cursor:pointer;
-}
-.pause-motion-btn:hover{border-color:var(--lime)}
-
-/* ---------- art column ---------- */
-.art-col{min-width:0}
-.hero{background:var(--red);border-radius:18px;border:1.5px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.5);overflow:hidden;margin-top:1.25rem}
-.hero img{display:block;width:100%;height:auto}
-/* photo accent strip — identical box to the old CTA band: same padding, 48px content height */
+/* photo accent strip — enlarged, blends into the mural's cream scallop edge */
 .hero-gallery{
-  background:var(--card);display:flex;gap:.9rem;justify-content:center;align-items:center;
-  padding:1rem 1rem 1.2rem;border-top:1.5px solid var(--line);
-  overflow-x:auto;
+  background:var(--panel);display:flex;gap:1rem;justify-content:center;align-items:center;
+  padding:1.1rem 1rem 1.3rem;overflow-x:auto;
 }
 .hero-gallery img{
-  height:48px;width:66px;object-fit:cover;flex:0 0 auto;
-  border:1.5px solid var(--line);border-radius:8px;
+  height:72px;width:100px;object-fit:cover;flex:0 0 auto;
+  border:2px solid var(--ink);border-radius:10px;
 }
 .hero-gallery img:nth-child(odd){transform:rotate(-2deg)}
 .hero-gallery img:nth-child(even){transform:rotate(2deg)}
 
-.ticker{overflow:hidden;white-space:nowrap;padding:.8rem 0;border:1.5px solid var(--line);border-radius:14px;background:var(--card);margin:1.5rem 0}
+/* inner sections of the cream panel */
+.inner{padding:0 1.5rem}
+.ticker{overflow:hidden;white-space:nowrap;padding:.8rem 0;border:2px solid var(--ink);border-radius:14px;background:var(--white);margin:.5rem 0 1.25rem}
 .ticker-track{display:inline-block;animation:tickerScroll 26s linear infinite}
 .ticker:hover .ticker-track{animation-play-state:paused}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker .chunk{font-size:clamp(1rem,2.6vw,1.7rem);color:var(--cream)}
-.ticker .sep{color:var(--lime);margin:0 1rem}
-.ticker.tilt{transform:rotate(-1.2deg)}
+.ticker .chunk{font-size:clamp(1rem,2.6vw,1.7rem);color:var(--ink)}
+.ticker .sep{color:var(--green);margin:0 1rem}
+.ticker-ink{background:var(--ink)}
+.ticker-ink .chunk{color:var(--panel)}
+.ticker-ink .sep{color:var(--lime)}
+.ticker-ink.tilt{transform:rotate(-1.2deg);margin:1.5rem 0}
 
 .flavor{
   background:var(--red);color:var(--white);text-align:center;
-  border:1.5px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.5);
-  padding:2.4rem 1.4rem;margin:2rem 0;
+  border-radius:18px;box-shadow:4px 4px 0 var(--ink);
+  padding:2.4rem 1.4rem;margin:1.75rem 0;
 }
 .flavor h2{font-size:clamp(1.6rem,4vw,2.4rem);color:var(--white)}
 .flavor p{font-weight:800;text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;margin:.9rem 0 1.4rem}
 
-.slider-sec{padding:2rem 0 .5rem}
+/* slider — widened */
+.slider-sec{padding:1rem 0 .25rem}
 .slider-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap}
-.slider-head h2{font-size:clamp(1.6rem,4vw,2.4rem);color:var(--cream)}
+.slider-head h2{font-size:clamp(1.6rem,4vw,2.4rem);color:var(--ink)}
 .slider-btns{display:flex;gap:.6rem}
 .slider-btns button{
-  width:46px;height:46px;border-radius:999px;border:2px solid var(--line);
+  width:46px;height:46px;border-radius:999px;border:3px solid var(--ink);
   background:var(--green);color:var(--white);font-size:1.25rem;font-weight:800;cursor:pointer;
+  box-shadow:3px 3px 0 var(--ink);
 }
-.slider-btns button:hover{background:var(--green-deep);border-color:var(--lime)}
+.slider-btns button:hover{background:var(--green-deep)}
+.slider-btns button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
 .slider{display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.5rem .25rem 1.25rem}
 .slider::-webkit-scrollbar{height:10px}
-.slider::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+.slider::-webkit-scrollbar-thumb{background:var(--ink);border-radius:99px}
 .slide{
-  flex:0 0 min(260px,80vw);scroll-snap-align:start;
-  border:1.5px solid var(--line);border-radius:16px;overflow:hidden;
-  box-shadow:0 8px 22px rgba(0,0,0,.45);background:var(--card);
+  flex:0 0 min(310px,82vw);scroll-snap-align:start;
+  border:2px solid var(--ink);border-radius:16px;overflow:hidden;
+  box-shadow:5px 5px 0 var(--ink);background:var(--white);
 }
-.slide img{width:100%;height:210px;object-fit:cover;display:block}
-.slide .cap{padding:.85rem 1rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;color:var(--cream)}
-.slide-text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.4rem;min-height:262px}
-.slide-text .chunk{font-size:1.4rem;line-height:1.1}
+.slide img{width:100%;height:250px;object-fit:cover;display:block}
+.slide .cap{padding:.85rem 1rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;color:var(--ink)}
+.slide-text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.4rem;min-height:302px}
+.slide-text .chunk{font-size:1.5rem;line-height:1.1}
 .slide-text .chip{margin-top:1rem;font-family:'Titan One',sans-serif;font-size:.72rem;letter-spacing:.06em;padding:.3rem .8rem;border-radius:999px;border:2px solid currentColor}
-.slide-ink{background:var(--card);color:var(--cream)}
+.slide-ink{background:var(--ink);color:var(--panel)}
 .slide-red{background:var(--red);color:var(--white)}
 .slide-green{background:var(--green);color:var(--white)}
 
-.circle-sec{padding:2rem 0 3rem;text-align:center}
-.circle-sec h2{color:var(--cream)}
-.circle-wrap{position:relative;width:min(400px,90vw);margin:1.5rem auto 0}
+.circle-sec{padding:1.5rem 0 2rem;text-align:center}
+.circle-sec h2{color:var(--ink)}
+.circle-wrap{position:relative;width:min(400px,88vw);margin:1.5rem auto 0}
 .circle-wrap svg{width:100%;height:auto;display:block}
 .stickers{position:absolute;inset:0;pointer-events:none}
 .sticker{
   position:absolute;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;
-  padding:.4rem .9rem;border-radius:999px;border:2px solid var(--bg);box-shadow:0 4px 12px rgba(0,0,0,.5);
+  padding:.4rem .9rem;border-radius:999px;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);
 }
 .sticker-red{background:var(--red);color:var(--white)}
 .sticker-green{background:var(--green);color:var(--white)}
 
-.visit{text-align:center;padding:1rem 0 3rem}
-.visit h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:1rem;color:var(--cream)}
-.visit p{max-width:52ch;margin:0 auto .4rem;font-weight:600;color:var(--cream)}
+.visit{text-align:center;padding:.5rem 0 1rem}
+.visit h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:1rem;color:var(--ink)}
+.visit p{max-width:52ch;margin:0 auto .4rem;font-weight:600;color:var(--ink)}
 .visit .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
 
-/* ---------- mobile quick actions ---------- */
+/* mobile quick actions */
 .qa-fab{
   display:flex;align-items:center;gap:.5rem;
   position:fixed;bottom:1rem;right:1rem;z-index:60;
   background:var(--green);color:var(--white);
-  border:2px solid var(--lime);border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.55);
+  border:2px solid var(--ink);border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.55);
   font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;
   padding:.75rem 1.1rem;cursor:pointer;font-family:'Archivo',sans-serif;
 }
 @media (min-width:1000px){.qa-fab{display:none}}
 dialog.qa-dialog{
-  background:var(--card);color:var(--cream);
-  border:1.5px solid var(--line);border-radius:18px;box-shadow:0 16px 44px rgba(0,0,0,.6);
+  background:var(--white);color:var(--ink);
+  border:none;border-radius:18px;box-shadow:0 16px 44px rgba(0,0,0,.6);
   padding:1.4rem;width:min(420px,92vw);margin:auto;
 }
 dialog.qa-dialog::backdrop{background:rgba(0,0,0,.65)}
 .qa-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
-.qa-head h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.1rem;color:var(--cream)}
+.qa-head h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.1rem;color:var(--ink)}
 .qa-close{
-  background:var(--red);color:var(--white);border:2px solid var(--line);border-radius:999px;
+  background:var(--red);color:var(--white);border:2px solid var(--ink);border-radius:999px;
   width:42px;height:42px;font-size:1.1rem;font-weight:800;cursor:pointer;
 }
 .qa-dialog .btn{display:block;width:100%;margin-bottom:.65rem;font-size:.8rem;padding:.8rem 1rem}
+.qa-dialog .rail-info{border-top:1.5px solid var(--line-light)}
 
 /* footer */
-.site-footer{background:var(--card);border-top:1.5px solid var(--line);color:var(--cream);text-align:center;padding:2.2rem 1rem;margin-top:2rem}
+.site-footer{background:var(--bg);color:var(--panel);text-align:center;padding:2.2rem 1rem;margin-top:1.5rem}
 .site-footer a{color:var(--lime);font-weight:600}
 .site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
-.site-footer nav a{color:var(--cream);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
+.site-footer nav a{color:var(--panel);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
 .site-footer nav a:hover{color:var(--lime)}
 
 @media (max-width:600px){
-  .shell{padding:0 1rem}
+  .shell{padding:0.75rem .75rem 0}
+  .inner{padding:0 1rem}
   .slide{flex:0 0 84vw}
+  .hero-gallery img{height:58px;width:82px}
   .sticker{font-size:.62rem;padding:.3rem .6rem}
   .stickers .sticker:nth-child(1){left:0}
   .stickers .sticker:nth-child(2){right:0}
   .stickers .sticker:nth-child(3){left:0}
   .stickers .sticker:nth-child(4){right:0}
-  .visit .cta-row .btn,.hero-cta .btn{width:100%;max-width:320px}
+  .visit .cta-row .btn{width:100%;max-width:320px}
 }
 </style>
 </head>
@@ -227,43 +245,18 @@ dialog.qa-dialog::backdrop{background:rgba(0,0,0,.65)}
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
-    <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
-      <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
-        <text x="0" y="47">W</text>
-        <text x="80" y="47">W</text>
-        <text x="124" y="47" fill="#A7C23D">!</text>
-        <text x="148" y="47" letter-spacing="1">KABAB</text>
-      </g>
-      <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
-      <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
-      <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
-      <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
-    </svg>
-  </a>
-  <nav class="site-nav" aria-label="Main">
-    <ul>
-      <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="story.html">Our Story</a></li>
-      <li><a href="index.html#visit">Find Us</a></li>
-    </ul>
-  </nav>
-</header>
-
 <main id="main">
   <h1 class="sr-only">Wow Kabab — shawarma, kabobs and falafel in Rancho Cucamonga</h1>
 
   <div class="shell">
 
-    <!-- FUNCTIONAL RAIL — first in DOM on purpose (keyboard/screen reader priority) -->
+    <!-- WHITE FUNCTIONAL RAIL — first in DOM (keyboard/screen reader priority) -->
     <aside class="rail" aria-label="Quick actions">
       <h2>Quick actions</h2>
 
       <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
       <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
-      <a class="btn btn-red" href="menu.html">See the menu</a>
+      <a class="btn btn-cream" href="menu.html">See the menu</a>
       <a class="btn btn-cream" href="#visit">Find location</a>
       <a class="btn btn-cream" href="story.html">Our story</a>
       <a class="btn btn-cream" href="accessibility.html">Accessibility</a>
@@ -278,12 +271,36 @@ dialog.qa-dialog::backdrop{background:rgba(0,0,0,.65)}
       </div>
     </aside>
 
-    <!-- ART COLUMN -->
+    <!-- CREAM ART PANEL -->
     <div class="art-col">
 
       <section class="hero" aria-label="Welcome">
+        <header class="site-header">
+          <a class="brand" href="index.html" aria-label="Wow! Kabab — home">
+            <svg viewBox="0 0 316 64" aria-hidden="true" focusable="false">
+              <g font-family="'Baloo 2','Titan One',sans-serif" font-weight="800" font-size="46" fill="#FFFFFF">
+                <text x="0" y="47">W</text>
+                <text x="80" y="47">W</text>
+                <text x="124" y="47" fill="#A7C23D">!</text>
+                <text x="148" y="47" letter-spacing="1">KABAB</text>
+              </g>
+              <circle cx="60" cy="31" r="13" fill="none" stroke="#FFFFFF" stroke-width="9"/>
+              <circle cx="60" cy="31" r="3.2" fill="#FFFFFF"/>
+              <path d="M56 13c-9-1-13-8-11-14c8 0 12 7 11 14z" fill="#A7C23D"/>
+              <path d="M63 12c0-9 7-14 13-12c1 8-6 13-13 12z" fill="#A7C23D"/>
+            </svg>
+          </a>
+          <nav class="site-nav" aria-label="Main">
+            <ul>
+              <li><a href="index.html" aria-current="page">Home</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="story.html">Our Story</a></li>
+              <li><a href="index.html#visit">Find Us</a></li>
+            </ul>
+          </nav>
+        </header>
         <img src="images/hero.png" alt="The Wow Kabab. Hand-drawn storefront of the Wow Kabab restaurant with striped awnings and the olive-leaf logo on its sign.">
-        <!-- photo accent strip — same photos appear with full descriptions in the slider below -->
+        <!-- photo accent strip — same photos carry full descriptions in the slider below -->
         <div class="hero-gallery" aria-hidden="true">
           <img src="images/kabab_1.jpg" alt="">
           <img src="images/kabab_2.jpg" alt="">
@@ -291,104 +308,107 @@ dialog.qa-dialog::backdrop{background:rgba(0,0,0,.65)}
         </div>
       </section>
 
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span class="chunk">Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> </span>
+      <div class="inner">
+
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker-track">
+            <span class="chunk">Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> Crave, the Wow way <span class="sep">✺</span> Get ready to crave <span class="sep">✺</span> </span>
+          </div>
         </div>
+
+        <section class="slider-sec" aria-labelledby="slider-heading">
+          <div class="slider-head">
+            <h2 id="slider-heading" class="chunk">Fresh off the spit</h2>
+            <div class="slider-btns">
+              <button type="button" onclick="slideBy(-1)" aria-label="Scroll to previous items">‹</button>
+              <button type="button" onclick="slideBy(1)" aria-label="Scroll to next items">›</button>
+            </div>
+          </div>
+          <div class="slider" id="slider" tabindex="0" role="region" aria-label="Menu highlights, scrollable">
+            <figure class="slide">
+              <img src="images/kabab_1.jpg" alt="Beef and chicken shawarma stacked on two vertical rotisserie spits over glowing burners">
+              <figcaption class="cap">The spits, all day</figcaption>
+            </figure>
+            <div class="slide slide-ink slide-text">
+              <p class="chunk">Turn up the flavor. Turn up the fun.</p>
+              <span class="chip">Wow! Kabab</span>
+            </div>
+            <figure class="slide">
+              <img src="images/kabab_2.jpg" alt="Shawarma wraps cut open on a wooden board with seasoned fries and grilled peppers">
+              <figcaption class="cap">Wraps &amp; fries</figcaption>
+            </figure>
+            <div class="slide slide-green slide-text">
+              <p class="chunk">Snack like you mean it.</p>
+              <span class="chip">Vegan options</span>
+            </div>
+            <figure class="slide">
+              <img src="images/kabab_3.jpg" alt="Chicken shawarma platter with rice, flatbread, salad, pickled vegetables and white sauce">
+              <figcaption class="cap">The full plate</figcaption>
+            </figure>
+            <div class="slide slide-red slide-text">
+              <p class="chunk">Bring the kids. Bring everyone.</p>
+              <span class="chip">Kids' menu</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="flavor" aria-labelledby="flavor-heading">
+          <h2 id="flavor-heading" class="chunk">Ready for a flavor adventure</h2>
+          <p>Bold spice · fresh fire · made to order</p>
+          <a class="btn btn-cream" href="menu.html">Discover the menu</a>
+        </section>
+
+        <section class="circle-sec" aria-labelledby="circle-heading">
+          <h2 id="circle-heading" class="chunk" style="font-size:clamp(1.6rem,4vw,2.2rem)">One bite and you'll get it<span style="color:var(--green)">.</span></h2>
+          <div class="circle-wrap" role="img" aria-label="The words Wow Kabab spiraling around a delighted cartoon face, surrounded by stickers reading Shawarmaaa, Kabobzzz, Falafuuul and So creamyyy.">
+            <svg viewBox="0 0 420 420" aria-hidden="true" focusable="false">
+              <defs>
+                <path id="c1" d="M210,210 m-170,0 a170,170 0 1,1 340,0 a170,170 0 1,1 -340,0"/>
+                <path id="c2" d="M210,210 m-136,0 a136,136 0 1,1 272,0 a136,136 0 1,1 -272,0"/>
+                <path id="c3" d="M210,210 m-102,0 a102,102 0 1,1 204,0 a102,102 0 1,1 -204,0"/>
+              </defs>
+              <g font-family="'Titan One',sans-serif" font-size="26" letter-spacing="3">
+                <text fill="#CB1214"><textPath href="#c1">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
+                <text fill="#231F20"><textPath href="#c2" startOffset="30">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
+                <text fill="#186A34"><textPath href="#c3" startOffset="60">WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
+              </g>
+              <g fill="none" stroke="#231F20" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="210" cy="212" r="52" fill="#FFFFFF"/>
+                <path d="M170 186q8-14 22-16M250 186q-8-14-22-16" stroke-width="3"/>
+                <path d="M188 206q5-8 12 0M232 206q-5-8-12 0"/>
+                <path d="M192 232q18 16 36 0"/>
+                <path d="M198 236q12 8 24 0" stroke-width="3"/>
+                <path d="M158 196q-14-4-14-18q10-2 16 6q-2-12 8-16q8 8 2 20" fill="#FFFFFF" stroke-width="3.5"/>
+                <path d="M262 196q14-4 14-18q-10-2-16 6q2-12-8-16q-8 8-2 20" fill="#FFFFFF" stroke-width="3.5"/>
+                <path d="M162 152l-10-10M258 152l10-10M210 142v-14" stroke-width="3"/>
+              </g>
+            </svg>
+            <div class="stickers" aria-hidden="true">
+              <span class="sticker sticker-red" style="top:14%;left:-2%;transform:rotate(-10deg)">Shawarmaaa</span>
+              <span class="sticker sticker-green" style="top:8%;right:-3%;transform:rotate(8deg)">Kabobzzz</span>
+              <span class="sticker sticker-green" style="bottom:16%;left:-4%;transform:rotate(6deg)">Falafuuul</span>
+              <span class="sticker sticker-red" style="bottom:10%;right:-2%;transform:rotate(-7deg)">So creamyyy</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="ticker ticker-ink tilt" aria-hidden="true">
+          <div class="ticker-track">
+            <span class="chunk" style="font-size:1.05rem">Shawarma <span class="sep">✦</span> Kabobs <span class="sep">✦</span> Falafel <span class="sep">✦</span> Fries <span class="sep">✦</span> Hummus <span class="sep">✦</span> Wraps <span class="sep">✦</span> Plates <span class="sep">✦</span> Shawarma <span class="sep">✦</span> Kabobs <span class="sep">✦</span> Falafel <span class="sep">✦</span> Fries <span class="sep">✦</span> Hummus <span class="sep">✦</span> Wraps <span class="sep">✦</span> Plates <span class="sep">✦</span> </span>
+          </div>
+        </div>
+
+        <section class="visit" id="visit" aria-labelledby="visit-heading">
+          <h2 id="visit-heading" class="chunk">Find us<span style="color:var(--green)">.</span></h2>
+          <p>Masi Plaza · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA 91730</p>
+          <p>Open daily 11 AM – 9 PM</p>
+          <div class="cta-row">
+            <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
+            <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
+          </div>
+        </section>
+
       </div>
-
-      <section class="slider-sec" aria-labelledby="slider-heading">
-        <div class="slider-head">
-          <h2 id="slider-heading" class="chunk">Fresh off the spit</h2>
-          <div class="slider-btns">
-            <button type="button" onclick="slideBy(-1)" aria-label="Scroll to previous items">‹</button>
-            <button type="button" onclick="slideBy(1)" aria-label="Scroll to next items">›</button>
-          </div>
-        </div>
-        <div class="slider" id="slider" tabindex="0" role="region" aria-label="Menu highlights, scrollable">
-          <figure class="slide">
-            <img src="images/kabab_1.jpg" alt="Beef and chicken shawarma stacked on two vertical rotisserie spits over glowing burners">
-            <figcaption class="cap">The spits, all day</figcaption>
-          </figure>
-          <div class="slide slide-ink slide-text">
-            <p class="chunk">Turn up the flavor. Turn up the fun.</p>
-            <span class="chip">Wow! Kabab</span>
-          </div>
-          <figure class="slide">
-            <img src="images/kabab_2.jpg" alt="Shawarma wraps cut open on a wooden board with seasoned fries and grilled peppers">
-            <figcaption class="cap">Wraps &amp; fries</figcaption>
-          </figure>
-          <div class="slide slide-green slide-text">
-            <p class="chunk">Snack like you mean it.</p>
-            <span class="chip">Vegan options</span>
-          </div>
-          <figure class="slide">
-            <img src="images/kabab_3.jpg" alt="Chicken shawarma platter with rice, flatbread, salad, pickled vegetables and white sauce">
-            <figcaption class="cap">The full plate</figcaption>
-          </figure>
-          <div class="slide slide-red slide-text">
-            <p class="chunk">Bring the kids. Bring everyone.</p>
-            <span class="chip">Kids' menu</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="flavor" aria-labelledby="flavor-heading">
-        <h2 id="flavor-heading" class="chunk">Ready for a flavor adventure</h2>
-        <p>Bold spice · fresh fire · made to order</p>
-        <a class="btn btn-cream" href="menu.html">Discover the menu</a>
-      </section>
-
-      <section class="circle-sec" aria-labelledby="circle-heading">
-        <h2 id="circle-heading" class="chunk" style="font-size:clamp(1.6rem,4vw,2.2rem)">One bite and you'll get it<span style="color:var(--lime)">.</span></h2>
-        <div class="circle-wrap" role="img" aria-label="The words Wow Kabab spiraling around a delighted cartoon face, surrounded by stickers reading Shawarmaaa, Kabobzzz, Falafuuul and So creamyyy.">
-          <svg viewBox="0 0 420 420" aria-hidden="true" focusable="false">
-            <defs>
-              <path id="c1" d="M210,210 m-170,0 a170,170 0 1,1 340,0 a170,170 0 1,1 -340,0"/>
-              <path id="c2" d="M210,210 m-136,0 a136,136 0 1,1 272,0 a136,136 0 1,1 -272,0"/>
-              <path id="c3" d="M210,210 m-102,0 a102,102 0 1,1 204,0 a102,102 0 1,1 -204,0"/>
-            </defs>
-            <g font-family="'Titan One',sans-serif" font-size="26" letter-spacing="3">
-              <text fill="#CB1214"><textPath href="#c1">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
-              <text fill="#FBF4E3"><textPath href="#c2" startOffset="30">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
-              <text fill="#A7C23D"><textPath href="#c3" startOffset="60">WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
-            </g>
-            <g fill="none" stroke="#231F20" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="210" cy="212" r="52" fill="#FBF4E3"/>
-              <path d="M170 186q8-14 22-16M250 186q-8-14-22-16" stroke-width="3"/>
-              <path d="M188 206q5-8 12 0M232 206q-5-8-12 0"/>
-              <path d="M192 232q18 16 36 0"/>
-              <path d="M198 236q12 8 24 0" stroke-width="3"/>
-              <path d="M158 196q-14-4-14-18q10-2 16 6q-2-12 8-16q8 8 2 20" fill="#FBF4E3" stroke-width="3.5"/>
-              <path d="M262 196q14-4 14-18q-10-2-16 6q2-12-8-16q-8 8-2 20" fill="#FBF4E3" stroke-width="3.5"/>
-              <path d="M162 152l-10-10M258 152l10-10M210 142v-14" stroke="#FBF4E3" stroke-width="3"/>
-            </g>
-          </svg>
-          <div class="stickers" aria-hidden="true">
-            <span class="sticker sticker-red" style="top:14%;left:-2%;transform:rotate(-10deg)">Shawarmaaa</span>
-            <span class="sticker sticker-green" style="top:8%;right:-3%;transform:rotate(8deg)">Kabobzzz</span>
-            <span class="sticker sticker-green" style="bottom:16%;left:-4%;transform:rotate(6deg)">Falafuuul</span>
-            <span class="sticker sticker-red" style="bottom:10%;right:-2%;transform:rotate(-7deg)">So creamyyy</span>
-          </div>
-        </div>
-      </section>
-
-      <div class="ticker tilt" aria-hidden="true">
-        <div class="ticker-track">
-          <span class="chunk" style="font-size:1.05rem">Shawarma <span class="sep">✦</span> Kabobs <span class="sep">✦</span> Falafel <span class="sep">✦</span> Fries <span class="sep">✦</span> Hummus <span class="sep">✦</span> Wraps <span class="sep">✦</span> Plates <span class="sep">✦</span> Shawarma <span class="sep">✦</span> Kabobs <span class="sep">✦</span> Falafel <span class="sep">✦</span> Fries <span class="sep">✦</span> Hummus <span class="sep">✦</span> Wraps <span class="sep">✦</span> Plates <span class="sep">✦</span> </span>
-        </div>
-      </div>
-
-      <section class="visit" id="visit" aria-labelledby="visit-heading">
-        <h2 id="visit-heading" class="chunk">Find us<span style="color:var(--lime)">.</span></h2>
-        <p>Masi Plaza · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA 91730</p>
-        <p>Open daily 11 AM – 9 PM</p>
-        <div class="cta-row">
-          <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
-          <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
-        </div>
-      </section>
-
     </div>
   </div>
 </main>
@@ -405,11 +425,11 @@ dialog.qa-dialog::backdrop{background:rgba(0,0,0,.65)}
   </div>
   <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
   <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
-  <a class="btn btn-red" href="menu.html">See the menu</a>
+  <a class="btn btn-cream" href="menu.html">See the menu</a>
   <a class="btn btn-cream" href="#visit" onclick="document.getElementById('qa').close()">Find location</a>
   <a class="btn btn-cream" href="story.html">Our story</a>
   <a class="btn btn-cream" href="accessibility.html">Accessibility</a>
-  <div class="rail-info" style="margin-top:1.1rem;border-top:1.5px solid var(--line);padding-top:1rem">
+  <div class="rail-info" style="margin-top:1.1rem;padding-top:1rem">
     <p class="rail-label">Hours</p>
     <p style="font-size:.9rem;margin-bottom:1rem">Open daily 11 AM – 9 PM</p>
     <p class="rail-label">Address</p>
@@ -442,7 +462,7 @@ function toggleMotion(){
 function slideBy(dir){
   var s = document.getElementById('slider');
   var card = s.querySelector('.slide');
-  var w = card ? card.getBoundingClientRect().width + 18 : 300;
+  var w = card ? card.getBoundingClientRect().width + 18 : 320;
   s.scrollBy({left: dir * w, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
 }
 </script>
