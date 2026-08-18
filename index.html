@@ -4,33 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wow Kabab — Shawarma, Kabobs &amp; Falafel in Rancho Cucamonga</title>
-<meta name="description" content="Beef shawarma, kabobs, falafel and Mediterranean fare in Masi Plaza, Rancho Cucamonga. Vegan options and kids' menu. Call (909) 481-9099.">
+<meta name="description" content="Beef shawarma, kabobs, falafel and Mediterranean fare in Masi Plaza, Rancho Cucamonga. Open daily 11 AM – 9 PM. Call (909) 481-9099.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Baloo+2:wght@800&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{
+  --bg:#171415;          /* sleek near-black page */
+  --card:#231F20;        /* card/nav ink */
+  --line:#3A3536;        /* subtle borders on dark */
   --red:#CB1214;
   --red-deep:#A00E10;
   --green:#186A34;
   --green-deep:#0F4D24;
-  --lime:#A7C23D;
+  --lime:#A7C23D;        /* labels + accents on dark: 7.9:1 */
   --cream:#FBF4E3;
-  --ink:#231F20;
   --white:#FFFFFF;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:6rem}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:clip}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--cream);line-height:1.6;overflow-x:clip}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important;transition:none !important}
 }
 body.motion-paused *{animation-play-state:paused !important}
 
-:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--cream), 0 0 0 9px var(--ink);border-radius:4px}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px;box-shadow:0 0 0 6px var(--bg),0 0 0 9px var(--lime);border-radius:4px}
 
-.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--white);padding:.75rem 1.25rem;font-weight:800}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--cream);color:var(--card);padding:.75rem 1.25rem;font-weight:800}
 .skip-link:focus{left:0}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
@@ -40,8 +42,8 @@ body.motion-paused *{animation-play-state:paused !important}
 .site-header{
   position:sticky;top:.6rem;z-index:50;
   max-width:1360px;width:calc(100% - 1.2rem);margin:.6rem auto 0;
-  background:var(--ink);color:var(--white);
-  border-radius:999px;padding:.55rem 1.1rem;
+  background:var(--card);color:var(--white);
+  border:1.5px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;
   display:flex;align-items:center;justify-content:space-between;gap:.75rem;
 }
 .brand{display:flex;align-items:center;text-decoration:none;flex-shrink:1;min-width:0}
@@ -52,136 +54,130 @@ body.motion-paused *{animation-play-state:paused !important}
   font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-radius:999px;border:2px solid transparent;
 }
 .site-nav a:hover{border-color:var(--lime)}
-.site-nav a[aria-current="page"]{background:var(--cream);color:var(--ink)}
+.site-nav a[aria-current="page"]{background:var(--cream);color:var(--card)}
 @media (max-width:560px){
   .site-header{padding:.5rem .8rem;top:.4rem}
   .brand svg{height:22px}
-  .site-nav a{font-size:.65rem;padding:.45rem .65rem;letter-spacing:.05em}
+  .site-nav a{font-size:.62rem;padding:.45rem .6rem;letter-spacing:.04em}
 }
 
 /* ---------- buttons ---------- */
 .btn{
   display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
   font-size:.92rem;padding:.85rem 1.6rem;border-radius:10px;text-decoration:none;cursor:pointer;
-  border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);text-align:center;
+  border:3px solid var(--card);box-shadow:4px 4px 0 rgba(0,0,0,.6);text-align:center;
 }
-.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(0,0,0,.6)}
 .btn-red{background:var(--red);color:var(--white)}
 .btn-red:hover{background:var(--red-deep)}
 .btn-green{background:var(--green);color:var(--white)}
 .btn-green:hover{background:var(--green-deep)}
-.btn-cream{background:var(--cream);color:var(--ink)}
+.btn-cream{background:var(--cream);color:var(--card)}
 
-/* ---------- two-column shell: rail is FIRST in DOM, RIGHT visually ---------- */
-.shell{
-  max-width:1360px;margin:0 auto;padding:0 1rem;
-  display:grid;grid-template-columns:1fr;gap:1.5rem;
-}
+/* ---------- shell: rail first in DOM, right visually ---------- */
+.shell{max-width:1360px;margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:1fr;gap:1.5rem}
 @media (min-width:1000px){
   .shell{grid-template-columns:minmax(0,1fr) 300px;align-items:start;gap:2rem}
   .rail{grid-column:2;grid-row:1}
   .art-col{grid-column:1;grid-row:1}
 }
 
-/* ---------- functional rail ---------- */
+/* ---------- rail: buttons on top, quiet info below ---------- */
 .rail{display:none}
 @media (min-width:1000px){
   .rail{
-    display:block;
-    position:sticky;top:5.2rem;
-    max-height:calc(100vh - 6.2rem);
-    overflow-y:auto;               /* internal scroll at high zoom — nothing gets cut off */
-    background:var(--white);
-    border:3px solid var(--ink);border-radius:18px;
-    box-shadow:5px 5px 0 var(--ink);
+    display:block;position:sticky;top:5.2rem;
+    max-height:calc(100vh - 6.2rem);overflow-y:auto;
+    background:var(--card);border:1.5px solid var(--line);border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
     padding:1.4rem 1.2rem;
   }
 }
-.rail h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.15rem;margin-bottom:1rem}
-.rail-group{margin-bottom:1.4rem}
-.rail-group h3{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:.5rem}
-.rail .btn{display:block;width:100%;margin-bottom:.6rem;font-size:.8rem;padding:.75rem 1rem}
-.rail-links{list-style:none}
-.rail-links li{margin-bottom:.35rem}
-.rail-links a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.rail-links a:hover{color:var(--red)}
-.rail address{font-style:normal;font-size:.9rem}
-.rail .hours-note{font-size:.9rem}
+.rail h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.1rem;margin-bottom:1.1rem;color:var(--cream)}
+.rail .btn{display:block;width:100%;margin-bottom:.65rem;font-size:.8rem;padding:.8rem 1rem}
+.rail-info{margin-top:1.3rem;border-top:1.5px solid var(--line);padding-top:1.1rem}
+.rail-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--lime);margin-bottom:.35rem}
+.rail-info p, .rail-info address{font-style:normal;font-size:.9rem;color:var(--cream);margin-bottom:1rem}
 .pause-motion-btn{
-  width:100%;background:var(--ink);color:var(--white);border:3px solid var(--ink);border-radius:10px;
-  font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;padding:.7rem;cursor:pointer;
+  width:100%;background:transparent;color:var(--cream);border:2px solid var(--line);border-radius:10px;
+  font-weight:800;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;padding:.7rem;cursor:pointer;
 }
+.pause-motion-btn:hover{border-color:var(--lime)}
 
 /* ---------- art column ---------- */
 .art-col{min-width:0}
-.hero{background:var(--red);border-radius:18px;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);overflow:hidden;margin-top:1.25rem}
+.hero{background:var(--red);border-radius:18px;border:1.5px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.5);overflow:hidden;margin-top:1.25rem}
 .hero img{display:block;width:100%;height:auto}
-.hero-cta{background:var(--cream);display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;padding:1rem 1rem 1.2rem;border-top:3px solid var(--ink)}
+/* photo accent strip — identical box to the old CTA band: same padding, 48px content height */
+.hero-gallery{
+  background:var(--card);display:flex;gap:.9rem;justify-content:center;align-items:center;
+  padding:1rem 1rem 1.2rem;border-top:1.5px solid var(--line);
+  overflow-x:auto;
+}
+.hero-gallery img{
+  height:48px;width:66px;object-fit:cover;flex:0 0 auto;
+  border:1.5px solid var(--line);border-radius:8px;
+}
+.hero-gallery img:nth-child(odd){transform:rotate(-2deg)}
+.hero-gallery img:nth-child(even){transform:rotate(2deg)}
 
-.ticker{overflow:hidden;white-space:nowrap;padding:.8rem 0;border:3px solid var(--ink);border-radius:14px;background:var(--white);margin:1.5rem 0}
+.ticker{overflow:hidden;white-space:nowrap;padding:.8rem 0;border:1.5px solid var(--line);border-radius:14px;background:var(--card);margin:1.5rem 0}
 .ticker-track{display:inline-block;animation:tickerScroll 26s linear infinite}
 .ticker:hover .ticker-track{animation-play-state:paused}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker .chunk{font-size:clamp(1rem,2.6vw,1.7rem);color:var(--ink)}
-.ticker .sep{color:var(--green);margin:0 1rem}
-.ticker-ink{background:var(--ink)}
-.ticker-ink .chunk{color:var(--cream)}
-.ticker-ink .sep{color:var(--lime)}
-.ticker-ink.tilt{transform:rotate(-1.2deg)}
+.ticker .chunk{font-size:clamp(1rem,2.6vw,1.7rem);color:var(--cream)}
+.ticker .sep{color:var(--lime);margin:0 1rem}
+.ticker.tilt{transform:rotate(-1.2deg)}
 
-/* flavor banner */
 .flavor{
   background:var(--red);color:var(--white);text-align:center;
-  border:3px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 var(--ink);
+  border:1.5px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.5);
   padding:2.4rem 1.4rem;margin:2rem 0;
 }
 .flavor h2{font-size:clamp(1.6rem,4vw,2.4rem);color:var(--white)}
 .flavor p{font-weight:800;text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;margin:.9rem 0 1.4rem}
 
-/* slider */
 .slider-sec{padding:2rem 0 .5rem}
 .slider-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap}
-.slider-head h2{font-size:clamp(1.6rem,4vw,2.4rem)}
+.slider-head h2{font-size:clamp(1.6rem,4vw,2.4rem);color:var(--cream)}
 .slider-btns{display:flex;gap:.6rem}
 .slider-btns button{
-  width:46px;height:46px;border-radius:999px;border:3px solid var(--ink);
+  width:46px;height:46px;border-radius:999px;border:2px solid var(--line);
   background:var(--green);color:var(--white);font-size:1.25rem;font-weight:800;cursor:pointer;
-  box-shadow:3px 3px 0 var(--ink);
 }
-.slider-btns button:hover{background:var(--green-deep)}
-.slider-btns button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.slider-btns button:hover{background:var(--green-deep);border-color:var(--lime)}
 .slider{display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.5rem .25rem 1.25rem}
 .slider::-webkit-scrollbar{height:10px}
-.slider::-webkit-scrollbar-thumb{background:var(--ink);border-radius:99px}
+.slider::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
 .slide{
   flex:0 0 min(260px,80vw);scroll-snap-align:start;
-  border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:5px 5px 0 var(--ink);background:var(--white);
+  border:1.5px solid var(--line);border-radius:16px;overflow:hidden;
+  box-shadow:0 8px 22px rgba(0,0,0,.45);background:var(--card);
 }
 .slide img{width:100%;height:210px;object-fit:cover;display:block}
-.slide .cap{padding:.85rem 1rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem}
+.slide .cap{padding:.85rem 1rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;color:var(--cream)}
 .slide-text{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.4rem;min-height:262px}
 .slide-text .chunk{font-size:1.4rem;line-height:1.1}
 .slide-text .chip{margin-top:1rem;font-family:'Titan One',sans-serif;font-size:.72rem;letter-spacing:.06em;padding:.3rem .8rem;border-radius:999px;border:2px solid currentColor}
-.slide-ink{background:var(--ink);color:var(--cream)}
+.slide-ink{background:var(--card);color:var(--cream)}
 .slide-red{background:var(--red);color:var(--white)}
 .slide-green{background:var(--green);color:var(--white)}
 
-/* circle art */
 .circle-sec{padding:2rem 0 3rem;text-align:center}
+.circle-sec h2{color:var(--cream)}
 .circle-wrap{position:relative;width:min(400px,90vw);margin:1.5rem auto 0}
 .circle-wrap svg{width:100%;height:auto;display:block}
 .stickers{position:absolute;inset:0;pointer-events:none}
 .sticker{
   position:absolute;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;
-  padding:.4rem .9rem;border-radius:999px;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);
+  padding:.4rem .9rem;border-radius:999px;border:2px solid var(--bg);box-shadow:0 4px 12px rgba(0,0,0,.5);
 }
 .sticker-red{background:var(--red);color:var(--white)}
 .sticker-green{background:var(--green);color:var(--white)}
 
-/* visit */
 .visit{text-align:center;padding:1rem 0 3rem}
-.visit h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:1rem}
-.visit p{max-width:52ch;margin:0 auto .4rem;font-weight:600}
+.visit h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:1rem;color:var(--cream)}
+.visit p{max-width:52ch;margin:0 auto .4rem;font-weight:600;color:var(--cream)}
 .visit .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
 
 /* ---------- mobile quick actions ---------- */
@@ -189,26 +185,27 @@ body.motion-paused *{animation-play-state:paused !important}
   display:flex;align-items:center;gap:.5rem;
   position:fixed;bottom:1rem;right:1rem;z-index:60;
   background:var(--green);color:var(--white);
-  border:3px solid var(--ink);border-radius:999px;box-shadow:4px 4px 0 var(--ink);
+  border:2px solid var(--lime);border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.55);
   font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;
   padding:.75rem 1.1rem;cursor:pointer;font-family:'Archivo',sans-serif;
 }
 @media (min-width:1000px){.qa-fab{display:none}}
 dialog.qa-dialog{
-  border:3px solid var(--ink);border-radius:18px;box-shadow:6px 6px 0 var(--ink);
-  padding:1.4rem;width:min(420px,92vw);
-  margin:auto;
+  background:var(--card);color:var(--cream);
+  border:1.5px solid var(--line);border-radius:18px;box-shadow:0 16px 44px rgba(0,0,0,.6);
+  padding:1.4rem;width:min(420px,92vw);margin:auto;
 }
-dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
+dialog.qa-dialog::backdrop{background:rgba(0,0,0,.65)}
 .qa-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
-.qa-head h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.15rem}
+.qa-head h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.1rem;color:var(--cream)}
 .qa-close{
-  background:var(--red);color:var(--white);border:3px solid var(--ink);border-radius:999px;
+  background:var(--red);color:var(--white);border:2px solid var(--line);border-radius:999px;
   width:42px;height:42px;font-size:1.1rem;font-weight:800;cursor:pointer;
 }
+.qa-dialog .btn{display:block;width:100%;margin-bottom:.65rem;font-size:.8rem;padding:.8rem 1rem}
 
 /* footer */
-.site-footer{background:var(--ink);color:var(--cream);text-align:center;padding:2.2rem 1rem;margin-top:2rem}
+.site-footer{background:var(--card);border-top:1.5px solid var(--line);color:var(--cream);text-align:center;padding:2.2rem 1rem;margin-top:2rem}
 .site-footer a{color:var(--lime);font-weight:600}
 .site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
 .site-footer nav a{color:var(--cream);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
@@ -217,7 +214,7 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
 @media (max-width:600px){
   .shell{padding:0 1rem}
   .slide{flex:0 0 84vw}
-  .sticker{font-size:.62rem;padding:.3rem .6rem;box-shadow:2px 2px 0 var(--ink)}
+  .sticker{font-size:.62rem;padding:.3rem .6rem}
   .stickers .sticker:nth-child(1){left:0}
   .stickers .sticker:nth-child(2){right:0}
   .stickers .sticker:nth-child(3){left:0}
@@ -250,6 +247,7 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
       <li><a href="index.html" aria-current="page">Home</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="story.html">Our Story</a></li>
+      <li><a href="index.html#visit">Find Us</a></li>
     </ul>
   </nav>
 </header>
@@ -259,38 +257,23 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
 
   <div class="shell">
 
-    <!-- FUNCTIONAL RAIL — first in code on purpose: keyboard and screen reader
-         users reach every action immediately. Visually placed right via CSS grid. -->
+    <!-- FUNCTIONAL RAIL — first in DOM on purpose (keyboard/screen reader priority) -->
     <aside class="rail" aria-label="Quick actions">
       <h2>Quick actions</h2>
 
-      <div class="rail-group">
-        <h3>Order &amp; visit</h3>
-        <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
-        <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
-      </div>
+      <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
+      <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
+      <a class="btn btn-red" href="menu.html">See the menu</a>
+      <a class="btn btn-cream" href="#visit">Find location</a>
+      <a class="btn btn-cream" href="story.html">Our story</a>
+      <a class="btn btn-cream" href="accessibility.html">Accessibility</a>
 
-      <div class="rail-group">
-        <h3>Hours</h3>
-        <p class="hours-note">Call for today's hours.</p>
-      </div>
-
-      <div class="rail-group">
-        <h3>Address</h3>
+      <div class="rail-info">
+        <p class="rail-label">Hours</p>
+        <p>Open daily 11 AM – 9 PM</p>
+        <p class="rail-label">Address</p>
         <address>Masi Plaza<br>11819 Foothill Blvd, Ste E<br>Rancho Cucamonga, CA 91730</address>
-      </div>
-
-      <div class="rail-group">
-        <h3>Explore</h3>
-        <ul class="rail-links">
-          <li><a href="menu.html">Full menu</a></li>
-          <li><a href="story.html">Our story</a></li>
-          <li><a href="accessibility.html">Accessibility statement</a></li>
-        </ul>
-      </div>
-
-      <div class="rail-group">
-        <h3>Page settings</h3>
+        <p class="rail-label">Page settings</p>
         <button type="button" class="pause-motion-btn" aria-pressed="false" onclick="toggleMotion()">Pause motion</button>
       </div>
     </aside>
@@ -300,9 +283,11 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
 
       <section class="hero" aria-label="Welcome">
         <img src="images/hero.png" alt="The Wow Kabab. Hand-drawn storefront of the Wow Kabab restaurant with striped awnings and the olive-leaf logo on its sign.">
-        <div class="hero-cta">
-          <a class="btn btn-red" href="menu.html">See the menu</a>
-          <a class="btn btn-cream" href="#visit">Find location</a>
+        <!-- photo accent strip — same photos appear with full descriptions in the slider below -->
+        <div class="hero-gallery" aria-hidden="true">
+          <img src="images/kabab_1.jpg" alt="">
+          <img src="images/kabab_2.jpg" alt="">
+          <img src="images/kabab_3.jpg" alt="">
         </div>
       </section>
 
@@ -355,7 +340,7 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
       </section>
 
       <section class="circle-sec" aria-labelledby="circle-heading">
-        <h2 id="circle-heading" class="chunk" style="font-size:clamp(1.6rem,4vw,2.2rem)">One bite and you'll get it<span style="color:var(--green)">.</span></h2>
+        <h2 id="circle-heading" class="chunk" style="font-size:clamp(1.6rem,4vw,2.2rem)">One bite and you'll get it<span style="color:var(--lime)">.</span></h2>
         <div class="circle-wrap" role="img" aria-label="The words Wow Kabab spiraling around a delighted cartoon face, surrounded by stickers reading Shawarmaaa, Kabobzzz, Falafuuul and So creamyyy.">
           <svg viewBox="0 0 420 420" aria-hidden="true" focusable="false">
             <defs>
@@ -365,8 +350,8 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
             </defs>
             <g font-family="'Titan One',sans-serif" font-size="26" letter-spacing="3">
               <text fill="#CB1214"><textPath href="#c1">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
-              <text fill="#231F20"><textPath href="#c2" startOffset="30">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
-              <text fill="#186A34"><textPath href="#c3" startOffset="60">WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
+              <text fill="#FBF4E3"><textPath href="#c2" startOffset="30">WOWKABAB•WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
+              <text fill="#A7C23D"><textPath href="#c3" startOffset="60">WOWKABAB•WOWKABAB•WOWKABAB•</textPath></text>
             </g>
             <g fill="none" stroke="#231F20" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="210" cy="212" r="52" fill="#FBF4E3"/>
@@ -376,7 +361,7 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
               <path d="M198 236q12 8 24 0" stroke-width="3"/>
               <path d="M158 196q-14-4-14-18q10-2 16 6q-2-12 8-16q8 8 2 20" fill="#FBF4E3" stroke-width="3.5"/>
               <path d="M262 196q14-4 14-18q-10-2-16 6q2-12-8-16q-8 8-2 20" fill="#FBF4E3" stroke-width="3.5"/>
-              <path d="M162 152l-10-10M258 152l10-10M210 142v-14" stroke-width="3"/>
+              <path d="M162 152l-10-10M258 152l10-10M210 142v-14" stroke="#FBF4E3" stroke-width="3"/>
             </g>
           </svg>
           <div class="stickers" aria-hidden="true">
@@ -388,16 +373,16 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
         </div>
       </section>
 
-      <div class="ticker ticker-ink tilt" aria-hidden="true">
+      <div class="ticker tilt" aria-hidden="true">
         <div class="ticker-track">
           <span class="chunk" style="font-size:1.05rem">Shawarma <span class="sep">✦</span> Kabobs <span class="sep">✦</span> Falafel <span class="sep">✦</span> Fries <span class="sep">✦</span> Hummus <span class="sep">✦</span> Wraps <span class="sep">✦</span> Plates <span class="sep">✦</span> Shawarma <span class="sep">✦</span> Kabobs <span class="sep">✦</span> Falafel <span class="sep">✦</span> Fries <span class="sep">✦</span> Hummus <span class="sep">✦</span> Wraps <span class="sep">✦</span> Plates <span class="sep">✦</span> </span>
         </div>
       </div>
 
       <section class="visit" id="visit" aria-labelledby="visit-heading">
-        <h2 id="visit-heading" class="chunk">Find us<span style="color:var(--green)">.</span></h2>
+        <h2 id="visit-heading" class="chunk">Find us<span style="color:var(--lime)">.</span></h2>
         <p>Masi Plaza · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA 91730</p>
-        <p>Call for today's hours.</p>
+        <p>Open daily 11 AM – 9 PM</p>
         <div class="cta-row">
           <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
           <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
@@ -408,7 +393,6 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
   </div>
 </main>
 
-<!-- Mobile quick actions: real button + native dialog (Esc closes, focus handled by the browser) -->
 <button type="button" class="qa-fab" onclick="document.getElementById('qa').showModal()">
   <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="4.5" x2="15" y2="4.5"/><line x1="3" y1="9" x2="15" y2="9"/><line x1="3" y1="13.5" x2="15" y2="13.5"/></g></svg>
   Quick actions
@@ -419,26 +403,18 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
     <h2 id="qa-title">Quick actions</h2>
     <button type="button" class="qa-close" onclick="document.getElementById('qa').close()" aria-label="Close quick actions">✕</button>
   </div>
-  <div class="rail-group">
-    <h3 style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:.5rem">Order &amp; visit</h3>
-    <a class="btn btn-green" style="display:block;margin-bottom:.6rem;font-size:.8rem;padding:.75rem 1rem" href="tel:+19094819099">Call (909) 481-9099</a>
-    <a class="btn btn-cream" style="display:block;margin-bottom:.6rem;font-size:.8rem;padding:.75rem 1rem" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
-  </div>
-  <div class="rail-group">
-    <h3 style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:.5rem">Hours &amp; address</h3>
-    <p style="font-size:.9rem">Call for today's hours.</p>
-    <address style="font-style:normal;font-size:.9rem">Masi Plaza, 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA 91730</address>
-  </div>
-  <div class="rail-group">
-    <h3 style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:.5rem">Explore</h3>
-    <ul class="rail-links">
-      <li><a href="menu.html">Full menu</a></li>
-      <li><a href="story.html">Our story</a></li>
-      <li><a href="accessibility.html">Accessibility statement</a></li>
-    </ul>
-  </div>
-  <div class="rail-group" style="margin-bottom:0">
-    <h3 style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:.5rem">Page settings</h3>
+  <a class="btn btn-green" href="tel:+19094819099">Call (909) 481-9099</a>
+  <a class="btn btn-cream" href="https://maps.google.com/?q=11819+Foothill+Blvd+Ste+E+Rancho+Cucamonga+CA+91730">Get directions</a>
+  <a class="btn btn-red" href="menu.html">See the menu</a>
+  <a class="btn btn-cream" href="#visit" onclick="document.getElementById('qa').close()">Find location</a>
+  <a class="btn btn-cream" href="story.html">Our story</a>
+  <a class="btn btn-cream" href="accessibility.html">Accessibility</a>
+  <div class="rail-info" style="margin-top:1.1rem;border-top:1.5px solid var(--line);padding-top:1rem">
+    <p class="rail-label">Hours</p>
+    <p style="font-size:.9rem;margin-bottom:1rem">Open daily 11 AM – 9 PM</p>
+    <p class="rail-label">Address</p>
+    <address style="font-style:normal;font-size:.9rem;margin-bottom:1rem">Masi Plaza, 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA 91730</address>
+    <p class="rail-label">Page settings</p>
     <button type="button" class="pause-motion-btn" aria-pressed="false" onclick="toggleMotion()">Pause motion</button>
   </div>
 </dialog>
@@ -452,7 +428,7 @@ dialog.qa-dialog::backdrop{background:rgba(35,31,32,.55)}
       <li><a href="accessibility.html">Accessibility</a></li>
     </ul>
   </nav>
-  <p>© 2026 Wow Kabab · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA · <a href="tel:+19094819099">(909) 481-9099</a></p>
+  <p>© 2026 Wow Kabab · Open daily 11 AM – 9 PM · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA · <a href="tel:+19094819099">(909) 481-9099</a></p>
 </footer>
 
 <script>

@@ -9,33 +9,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Baloo+2:wght@800&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--red:#CB1214;--green:#186A34;--lime:#A7C23D;--cream:#FBF4E3;--ink:#231F20;--white:#FFFFFF}
+:root{--bg:#171415;--card:#231F20;--line:#3A3536;--red:#CB1214;--green:#186A34;--lime:#A7C23D;--cream:#FBF4E3;--white:#FFFFFF}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{font-family:'Archivo',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7}
-:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 6px var(--cream),0 0 0 9px var(--ink);border-radius:4px}
-.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--white);padding:.75rem 1.25rem;font-weight:800}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--bg);color:var(--cream);line-height:1.7}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px;box-shadow:0 0 0 6px var(--bg),0 0 0 9px var(--lime);border-radius:4px}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--cream);color:var(--card);padding:.75rem 1.25rem;font-weight:800}
 .skip-link:focus{left:0}
-.site-header{position:sticky;top:.6rem;z-index:50;max-width:1360px;width:calc(100% - 1.2rem);margin:.6rem auto 0;background:var(--ink);color:var(--white);border-radius:999px;padding:.55rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.site-header{position:sticky;top:.6rem;z-index:50;max-width:1360px;width:calc(100% - 1.2rem);margin:.6rem auto 0;background:var(--card);color:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:.55rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
 .brand{display:flex;align-items:center;text-decoration:none}
 .brand svg{height:30px;width:auto;display:block}
 .site-nav ul{list-style:none;display:flex;gap:.35rem;flex-wrap:wrap}
 .site-nav a{color:var(--white);text-decoration:none;font-weight:800;text-transform:uppercase;font-size:.78rem;letter-spacing:.1em;padding:.55rem 1rem;border-radius:999px;border:2px solid transparent}
 .site-nav a:hover{border-color:var(--lime)}
-@media (max-width:560px){.site-header{padding:.5rem .8rem;top:.4rem}.brand svg{height:22px}.site-nav a{font-size:.65rem;padding:.45rem .65rem;letter-spacing:.05em}}
-main{max-width:760px;margin:0 auto;padding:3rem 1.25rem 4rem}
+@media (max-width:560px){.site-header{padding:.5rem .8rem;top:.4rem}.brand svg{height:22px}.site-nav a{font-size:.62rem;padding:.45rem .6rem;letter-spacing:.04em}}
+main{max-width:760px;margin:0 auto;padding:2.5rem 1.25rem 3.5rem}
 h1{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:clamp(2rem,6vw,3rem);line-height:1;margin-bottom:1.5rem}
-h1 .dot{color:var(--green)}
-h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.3rem;margin:2.25rem 0 .75rem}
+h1 .dot{color:var(--lime)}
+h2{font-family:'Titan One',sans-serif;text-transform:uppercase;font-size:1.25rem;margin:2.25rem 0 .75rem;color:var(--cream)}
 p{margin-bottom:1rem;max-width:68ch}
 ul{margin:0 0 1rem 1.4rem}
 li{margin-bottom:.4rem}
-a{color:var(--red);font-weight:600}
-.card{background:var(--white);border:3px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 var(--ink);padding:1.5rem;margin:1.5rem 0}
-.site-footer{background:var(--ink);color:var(--cream);text-align:center;padding:2.2rem 1rem}
+a{color:var(--lime);font-weight:600}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5);padding:1.5rem;margin:1.5rem 0}
+.site-footer{background:var(--card);border-top:1.5px solid var(--line);color:var(--cream);text-align:center;padding:2.2rem 1rem}
 .site-footer a{color:var(--lime);font-weight:600}
-.site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
+.site-footer nav ul{list-style:none;display:flex;gap:1.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap;margin-left:0}
+.site-footer nav li{margin-bottom:0}
 .site-footer nav a{color:var(--cream);font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.1em;text-decoration:none}
 .site-footer nav a:hover{color:var(--lime)}
 </style>
@@ -64,6 +65,7 @@ a{color:var(--red);font-weight:600}
       <li><a href="index.html">Home</a></li>
       <li><a href="menu.html">Menu</a></li>
       <li><a href="story.html">Our Story</a></li>
+      <li><a href="index.html#visit">Find Us</a></li>
     </ul>
   </nav>
 </header>
@@ -93,12 +95,12 @@ a{color:var(--red);font-weight:600}
   <h2>Tell us if something isn't working</h2>
   <div class="card">
     <p>If any part of this site is hard to use with your assistive technology, we want to know and we'll fix it.</p>
-    <p><strong>Phone:</strong> <a href="tel:+19094819099">(909) 481-9099</a><br>
-    <strong>Email:</strong> [ADD BUSINESS EMAIL BEFORE PUBLISHING]</p>
+    <p><strong>Phone:</strong> <a href="tel:+19094819099">(909) 481-9099</a> (open daily 11 AM – 9 PM)<br>
+    <strong>Email:</strong> <a href="mailto:info@wowkabab.com">info@wowkabab.com</a></p>
     <p>We aim to respond within 2 business days.</p>
   </div>
 
-  <p><em>This statement was last reviewed on August 15, 2026.</em></p>
+  <p><em>This statement was last reviewed on August 18, 2026.</em></p>
 </main>
 
 <footer class="site-footer">
@@ -110,7 +112,7 @@ a{color:var(--red);font-weight:600}
       <li><a href="accessibility.html">Accessibility</a></li>
     </ul>
   </nav>
-  <p>© 2026 Wow Kabab · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA · <a href="tel:+19094819099">(909) 481-9099</a></p>
+  <p>© 2026 Wow Kabab · Open daily 11 AM – 9 PM · 11819 Foothill Blvd Ste E, Rancho Cucamonga, CA · <a href="tel:+19094819099">(909) 481-9099</a></p>
 </footer>
 
 </body>
